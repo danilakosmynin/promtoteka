@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Anthropic (Claude) — инструменты — пример запроса к API | Промтотека</title>
+<meta name="description" content="Модель сама решает вызвать вашу функцию. curl https://api.anthropic.com/v1/messages \ -H &quot;x-api-key: $ANTHROPIC_API_KEY&quot; \ -H &quot;anthropic-version…">
+<link rel="canonical" href="https://promoteka.tech/api/anthropic-claude-instrumenty/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Промтотека">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Anthropic (Claude) — инструменты — пример запроса к API | Промтотека">
+<meta property="og:description" content="Модель сама решает вызвать вашу функцию. curl https://api.anthropic.com/v1/messages \ -H &quot;x-api-key: $ANTHROPIC_API_KEY&quot; \ -H &quot;anthropic-version…">
+<meta property="og:url" content="https://promoteka.tech/api/anthropic-claude-instrumenty/">
+<meta property="og:image" content="https://promoteka.tech/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Промтотека", "item": "https://promoteka.tech/"}, {"@type": "ListItem", "position": 2, "name": "API", "item": "https://promoteka.tech/api/"}, {"@type": "ListItem", "position": 3, "name": "Anthropic (Claude) — инструменты", "item": "https://promoteka.tech/api/anthropic-claude-instrumenty/"}]}</script>
+<script>window.CATS={"Тексты": "/teksty/", "Работа": "/rabota/", "Маркетинг": "/marketing/", "Код": "/kod/", "Учёба": "/ucheba/", "Перевод": "/perevod/", "Жизнь": "/zhizn/", "Изображения": "/izobrazheniya/", "Видео": "/video/", "Музыка": "/muzyka/", "Системные": "/sistemnye/", "Приёмы": "/priemy/", "API": "/api/"}</script>
+<script src="/app.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<header>
+<ol class="crumbs" aria-label="Навигация"><li><a href="/">Промтотека</a></li><li><a href="/api/">API</a></li><li>Anthropic (Claude) — инструменты</li></ol>
+<h1>Anthropic (Claude) — инструменты</h1>
+</header>
+<main class="prompt" style="display:flex;flex-direction:column;gap:14px">
+<p class="desc">Модель сама решает вызвать вашу функцию.</p>
+<pre>curl https://api.anthropic.com/v1/messages \
+  -H &quot;x-api-key: $ANTHROPIC_API_KEY&quot; \
+  -H &quot;anthropic-version: 2023-06-01&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d &#x27;{
+    &quot;model&quot;: &quot;[название модели]&quot;,
+    &quot;max_tokens&quot;: 1024,
+    &quot;tools&quot;: [{
+      &quot;name&quot;: &quot;get_weather&quot;,
+      &quot;description&quot;: &quot;Текущая погода в городе&quot;,
+      &quot;input_schema&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {&quot;city&quot;: {&quot;type&quot;: &quot;string&quot;}},
+        &quot;required&quot;: [&quot;city&quot;]
+      }
+    }],
+    &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Какая погода в Казани?&quot;}]
+  }&#x27;
+
+# Если в ответе stop_reason = &quot;tool_use&quot; — выполните функцию
+# и отправьте результат следующим сообщением как блок tool_result.</pre>
+<div class="row"><button class="btn primary" data-copy>Копировать</button><a class="link" href="https://docs.claude.com" target="_blank" rel="noopener">Документация →</a></div>
+<p class="hint">Подставьте свой ключ и название модели из документации.</p>
+</main>
+<section class="related">
+<h2>Ещё в разделе «API»</h2>
+<ul><li><a href="/api/anthropic-claude-kartinka-na-vkhod/">Anthropic (Claude) — картинка на вход<span>Спросить модель о содержимом изображения.</span></a></li><li><a href="/api/google-gemini-python/">Google Gemini — Python<span>Официальная библиотека: pip install google-genai</span></a></li><li><a href="/api/ollama-python/">Ollama — Python<span>Локальная модель из кода: pip install ollama</span></a></li><li><a href="/api/openai-sovmestimye-api-iz-python/">OpenAI-совместимые API из Python<span>Одна библиотека openai для DeepSeek, OpenRouter, Groq, Ollama и других.</span></a></li><li><a href="/api/openai-zapros-k-chatu/">OpenAI — запрос к чату<span>Ключ — в переменной окружения OPENAI_API_KEY.</span></a></li><li><a href="/api/openai-python/">OpenAI — Python<span>Официальная библиотека: pip install openai</span></a></li><li><a href="/api/openai-kartinka/">OpenAI — картинка<span>Генерация изображения по тексту.</span></a></li><li><a href="/api/anthropic-claude-soobshchenie/">Anthropic (Claude) — сообщение<span>Ключ — в ANTHROPIC_API_KEY. Заголовок версии обязателен.</span></a></li></ul>
+<p class="hint" style="margin-top:14px"><a class="link" href="/api/">Все промты раздела →</a> · <a class="link" href="/">Все разделы →</a></p>
+</section>
+<footer>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · <a href="/">Промтотека</a></footer>
+</div>
+</body>
+</html>

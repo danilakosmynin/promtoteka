@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>OpenAI — озвучить текст — пример запроса к API | Промтотека</title>
+<meta name="description" content="Текст в аудиофайл. curl https://api.openai.com/v1/audio/speech \ -H &quot;Authorization: Bearer $OPENAI_API_KEY&quot; \ -H &quot;Content-Type: application/json&quot; \ -d &#x27;{…">
+<link rel="canonical" href="https://promoteka.tech/api/openai-ozvuchit-tekst/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Промтотека">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="OpenAI — озвучить текст — пример запроса к API | Промтотека">
+<meta property="og:description" content="Текст в аудиофайл. curl https://api.openai.com/v1/audio/speech \ -H &quot;Authorization: Bearer $OPENAI_API_KEY&quot; \ -H &quot;Content-Type: application/json&quot; \ -d &#x27;{…">
+<meta property="og:url" content="https://promoteka.tech/api/openai-ozvuchit-tekst/">
+<meta property="og:image" content="https://promoteka.tech/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Промтотека", "item": "https://promoteka.tech/"}, {"@type": "ListItem", "position": 2, "name": "API", "item": "https://promoteka.tech/api/"}, {"@type": "ListItem", "position": 3, "name": "OpenAI — озвучить текст", "item": "https://promoteka.tech/api/openai-ozvuchit-tekst/"}]}</script>
+<script>window.CATS={"Тексты": "/teksty/", "Работа": "/rabota/", "Маркетинг": "/marketing/", "Код": "/kod/", "Учёба": "/ucheba/", "Перевод": "/perevod/", "Жизнь": "/zhizn/", "Изображения": "/izobrazheniya/", "Видео": "/video/", "Музыка": "/muzyka/", "Системные": "/sistemnye/", "Приёмы": "/priemy/", "API": "/api/"}</script>
+<script src="/app.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<header>
+<ol class="crumbs" aria-label="Навигация"><li><a href="/">Промтотека</a></li><li><a href="/api/">API</a></li><li>OpenAI — озвучить текст</li></ol>
+<h1>OpenAI — озвучить текст</h1>
+</header>
+<main class="prompt" style="display:flex;flex-direction:column;gap:14px">
+<p class="desc">Текст в аудиофайл.</p>
+<pre>curl https://api.openai.com/v1/audio/speech \
+  -H &quot;Authorization: Bearer $OPENAI_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;model&quot;: &quot;[модель озвучки]&quot;,
+    &quot;input&quot;: &quot;Привет! Это проверка синтеза речи.&quot;,
+    &quot;voice&quot;: &quot;alloy&quot;
+  }&#x27; \
+  --output speech.mp3</pre>
+<div class="row"><button class="btn primary" data-copy>Копировать</button><a class="link" href="https://platform.openai.com/docs" target="_blank" rel="noopener">Документация →</a></div>
+<p class="hint">Подставьте свой ключ и название модели из документации.</p>
+</main>
+<section class="related">
+<h2>Ещё в разделе «API»</h2>
+<ul><li><a href="/api/anthropic-claude-potokovyy-otvet/">Anthropic (Claude) — потоковый ответ<span>Текст печатается по мере генерации. pip install anthropic</span></a></li><li><a href="/api/anthropic-claude-instrumenty/">Anthropic (Claude) — инструменты<span>Модель сама решает вызвать вашу функцию.</span></a></li><li><a href="/api/anthropic-claude-kartinka-na-vkhod/">Anthropic (Claude) — картинка на вход<span>Спросить модель о содержимом изображения.</span></a></li><li><a href="/api/google-gemini-python/">Google Gemini — Python<span>Официальная библиотека: pip install google-genai</span></a></li><li><a href="/api/ollama-python/">Ollama — Python<span>Локальная модель из кода: pip install ollama</span></a></li><li><a href="/api/openai-sovmestimye-api-iz-python/">OpenAI-совместимые API из Python<span>Одна библиотека openai для DeepSeek, OpenRouter, Groq, Ollama и других.</span></a></li><li><a href="/api/openai-zapros-k-chatu/">OpenAI — запрос к чату<span>Ключ — в переменной окружения OPENAI_API_KEY.</span></a></li><li><a href="/api/openai-python/">OpenAI — Python<span>Официальная библиотека: pip install openai</span></a></li></ul>
+<p class="hint" style="margin-top:14px"><a class="link" href="/api/">Все промты раздела →</a> · <a class="link" href="/">Все разделы →</a></p>
+</section>
+<footer>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · <a href="/">Промтотека</a></footer>
+</div>
+</body>
+</html>
