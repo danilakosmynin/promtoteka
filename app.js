@@ -124,7 +124,9 @@ function copy(text, btn, label){
 const OPEN = {
   chatgpt: t => "https://chatgpt.com/?q=" + encodeURIComponent(t),
   claude: t => "https://claude.ai/new?q=" + encodeURIComponent(t),
+  alice: () => "https://alice.yandex.ru/",   // текст из ссылки Алиса не подставляет — он уже в буфере обмена
 };
+const PASTE_ONLY = {alice: "Скопировано — вставьте в чат Алисы"};
 
 document.addEventListener("click", e => {
   const c = e.target.closest("[data-copy]");
@@ -143,6 +145,9 @@ document.addEventListener("click", e => {
     const text = textOf(pre);
     copy(text);   // на случай, если сервис не подставит текст из ссылки
     window.open(OPEN[o.dataset.open](text), "_blank", "noopener");
+    const hint = PASTE_ONLY[o.dataset.open];
+    if (hint) { const label = o.textContent; o.textContent = hint; o.classList.add("done");
+      setTimeout(() => { o.textContent = label; o.classList.remove("done"); }, 4000); }
     goal("open_" + o.dataset.open);
     return;
   }

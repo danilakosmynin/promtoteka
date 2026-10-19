@@ -131,7 +131,7 @@ def page(*, title, desc, path, body, ld=None, og_type="website"):
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
 <link rel="stylesheet" href="/style.css?v=3">{lds}
 <script>window.SITE={site_js}</script>
-<script src="/app.js?v=3" defer></script>{m_head}
+<script src="/app.js?v=4" defer></script>{m_head}
 </head>
 <body>
 {m_body}<div class="wrap">
@@ -338,7 +338,8 @@ def main():
             others = (items[i + 1:] + items[:i])[:8]
             link = f'<a class="link" href="{e(p["link"])}" target="_blank" rel="noopener">Документация →</a>' if p.get("link") else ""
             chat = "" if c in NO_CHAT else ('<button class="btn" type="button" data-open="chatgpt">Открыть в ChatGPT</button>'
-                                            '<button class="btn" type="button" data-open="claude">Открыть в Claude</button>')
+                                            '<button class="btn" type="button" data-open="claude">Открыть в Claude</button>'
+                                            '<button class="btn" type="button" data-open="alice">Открыть в Алисе</button>')
             hint = ("Подставьте свой ключ и название модели из документации."
                     if c in NO_CHAT else
                     "Заполните поля — текст обновится сразу. Затем скопируйте его или откройте в нейросети.")
