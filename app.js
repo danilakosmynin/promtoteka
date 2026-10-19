@@ -116,10 +116,24 @@ if (pre && inputs.length) {
 const textOf = el => el === pre ? fillText() : el.textContent;
 
 // ───────── Клики: копирование, открыть в нейросети, избранное, ссылки, удаление
+// Старый способ копирования: работает и на сайтах без HTTPS, где navigator.clipboard недоступен
+function legacyCopy(text){
+  const ta = document.createElement("textarea");
+  ta.value = text; ta.setAttribute("readonly", "");
+  ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0";
+  document.body.appendChild(ta);
+  ta.select(); ta.setSelectionRange(0, text.length);   // setSelectionRange нужен для iOS
+  let ok = false;
+  try { ok = document.execCommand("copy"); } catch(e){}
+  ta.remove();
+  return ok;
+}
 function copy(text, btn, label){
   const ok = () => { if (!btn) return; btn.textContent = "Скопировано"; btn.classList.add("done");
     setTimeout(() => { btn.textContent = label; btn.classList.remove("done"); }, 1500); };
-  try { return navigator.clipboard.writeText(text).then(ok, () => false); } catch(e){ return Promise.resolve(false); }
+  const fallback = () => legacyCopy(text) ? ok() : false;
+  if (!navigator.clipboard || !window.isSecureContext) return Promise.resolve(fallback());
+  try { return navigator.clipboard.writeText(text).then(ok, fallback); } catch(e){ return Promise.resolve(fallback()); }
 }
 const OPEN = {
   chatgpt: t => "https://chatgpt.com/?q=" + encodeURIComponent(t),

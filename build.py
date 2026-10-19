@@ -131,7 +131,7 @@ def page(*, title, desc, path, body, ld=None, og_type="website"):
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
 <link rel="stylesheet" href="/style.css?v=3">{lds}
 <script>window.SITE={site_js}</script>
-<script src="/app.js?v=4" defer></script>{m_head}
+<script src="/app.js?v=5" defer></script>{m_head}
 </head>
 <body>
 {m_body}<div class="wrap">
