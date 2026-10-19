@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Округление и точность — промт для задач по программированию | Промтотека</title>
+<meta name="description" content="Почему 0.1 + 0.2 ≠ 0.3 и как с этим жить. В моём решении проблема с дробными числами: [что не так — например, ответ отличается в последнем знаке]…">
+<link rel="canonical" href="https://promoteka.tech/zadachi/okruglenie-i-tochnost/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Промтотека">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Округление и точность — промт для задач по программированию | Промтотека">
+<meta property="og:description" content="Почему 0.1 + 0.2 ≠ 0.3 и как с этим жить. В моём решении проблема с дробными числами: [что не так — например, ответ отличается в последнем знаке]…">
+<meta property="og:url" content="https://promoteka.tech/zadachi/okruglenie-i-tochnost/">
+<meta property="og:image" content="https://promoteka.tech/og.png?v=2">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="/style.css?v=3">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Промтотека", "item": "https://promoteka.tech/"}, {"@type": "ListItem", "position": 2, "name": "Задачи", "item": "https://promoteka.tech/zadachi/"}, {"@type": "ListItem", "position": 3, "name": "Округление и точность", "item": "https://promoteka.tech/zadachi/okruglenie-i-tochnost/"}]}</script>
+<script>window.SITE={"cats": {"Тексты": "/teksty/", "Работа": "/rabota/", "Маркетинг": "/marketing/", "Код": "/kod/", "Задачи": "/zadachi/", "Учёба": "/ucheba/", "Перевод": "/perevod/", "Жизнь": "/zhizn/", "Изображения": "/izobrazheniya/", "Видео": "/video/", "Музыка": "/muzyka/", "Системные": "/sistemnye/", "Приёмы": "/priemy/", "API": "/api/"}, "metrika": "113671980"}</script>
+<script src="/app.js?v=5" defer></script>
+<script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js?id=113671980","ym");
+ym(113671980,"init",{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});</script>
+</head>
+<body>
+<noscript><div><img src="https://mc.yandex.ru/watch/113671980" style="position:absolute;left:-9999px" alt=""></div></noscript>
+<div class="wrap">
+<div class="top"><a class="logo" href="/"><img src="/favicon.svg?v=2" width="24" height="24" alt="">Промтотека</a>
+<nav><a href="/gaydy/">Гайды</a><button class="theme" id="theme" type="button" aria-label="Сменить тему" title="Сменить тему"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg></button></nav></div>
+<header>
+<ol class="crumbs" aria-label="Навигация"><li><a href="/">Промтотека</a></li><li><a href="/zadachi/">Задачи</a></li><li>Округление и точность</li></ol>
+<h1>Округление и точность</h1>
+</header>
+<main class="prompt" data-path="/zadachi/okruglenie-i-tochnost/">
+<p class="desc">Почему 0.1 + 0.2 ≠ 0.3 и как с этим жить.</p>
+<details class="fill" open><summary>Заполнить поля · 4</summary><div class="fill-grid"><div class="field"><label for="v0">что не так — например, ответ отличается в последнем знаке</label><input id="v0" data-field="что не так — например, ответ отличается в последнем знаке" autocomplete="off"></div><div class="field"><label for="v1">язык</label><input id="v1" data-field="язык" autocomplete="off"></div><div class="field"><label for="v2">число</label><input id="v2" data-field="число" autocomplete="off"></div><div class="field wide"><label for="v3">код</label><textarea id="v3" data-field="код" rows="3"></textarea></div></div><button class="del" type="button" data-reset>Очистить поля</button></details>
+<pre data-src="В моём решении проблема с дробными числами: [что не так — например, ответ отличается в последнем знаке]. Объясни, почему так происходит в [язык], как правильно округлять до [число] знаков (в том числе «половина вверх») и когда лучше использовать целые числа или Decimal. Исправь мой код.
+
+Код:
+[код]">В моём решении проблема с дробными числами: [что не так — например, ответ отличается в последнем знаке]. Объясни, почему так происходит в [язык], как правильно округлять до [число] знаков (в том числе «половина вверх») и когда лучше использовать целые числа или Decimal. Исправь мой код.
+
+Код:
+[код]</pre>
+<div class="row"><button class="btn primary" type="button" data-copy>Копировать</button><button class="btn" type="button" data-open="chatgpt">Открыть в ChatGPT</button><button class="btn" type="button" data-open="claude">Открыть в Claude</button><button class="btn" type="button" data-open="alice">Открыть в Алисе</button><details class="share"><summary class="btn">Поделиться</summary><div><a href="https://t.me/share/url?url=https%3A//promoteka.tech/zadachi/okruglenie-i-tochnost/&amp;text=%D0%9E%D0%BA%D1%80%D1%83%D0%B3%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B8%20%D1%82%D0%BE%D1%87%D0%BD%D0%BE%D1%81%D1%82%D1%8C" target="_blank" rel="noopener">Telegram</a><a href="https://vk.com/share.php?url=https%3A//promoteka.tech/zadachi/okruglenie-i-tochnost/" target="_blank" rel="noopener">ВКонтакте</a><button type="button" data-copylink="https://promoteka.tech/zadachi/okruglenie-i-tochnost/">Скопировать ссылку</button></div></details><button class="star" type="button" data-fav="/zadachi/okruglenie-i-tochnost/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+<p class="hint">Заполните поля — текст обновится сразу. Затем скопируйте его или откройте в нейросети.</p>
+</main>
+<section class="related">
+<h2>Ещё в разделе «Задачи»</h2>
+<ul class="links"><li><a href="/zadachi/oformit-reshenie-funktsiey/">Оформить решение функцией<span>Под требования проверяющей системы.</span></a></li><li><a href="/zadachi/vvod-i-vyvod-dlya-testiruyushchey-sistemy/">Ввод и вывод для тестирующей системы<span>Чтение из stdin, вывод в stdout, быстрый ввод.</span></a></li><li><a href="/zadachi/reshenie-na-drugom-yazyke/">Решение на другом языке<span>Та же идея — на Python, C++, Java или Pascal.</span></a></li><li><a href="/zadachi/pokhozhie-zadachi-dlya-trenirovki/">Похожие задачи для тренировки<span>Закрепить приём на практике.</span></a></li><li><a href="/zadachi/plan-podgotovki-k-olimpiade/">План подготовки к олимпиаде<span>Темы и задачи по неделям.</span></a></li><li><a href="/zadachi/razbor-resheniya-iz-interneta/">Разбор решения из интернета<span>Понять чужой код, а не просто сдать.</span></a></li><li><a href="/zadachi/reshit-zadachu-po-programmirovaniyu/">Решить задачу по программированию<span>Решение, разбор идеи и проверка на примерах.</span></a></li><li><a href="/zadachi/podskazka-bez-resheniya/">Подсказка без решения<span>Чтобы додуматься самому.</span></a></li></ul>
+<p class="hint more"><a class="link" href="/zadachi/">Все промты раздела →</a> · <a class="link" href="/">Все разделы →</a></p>
+</section>
+<footer>
+<p><b>Промты для нейросетей:</b> <a href="/promty-dlya-chatgpt/">ChatGPT</a> · <a href="/promty-dlya-claude/">Claude</a> · <a href="/promty-dlya-gigachat/">GigaChat</a> · <a href="/promty-dlya-yandexgpt/">YandexGPT</a> · <a href="/promty-dlya-deepseek/">DeepSeek</a> · <a href="/promty-dlya-midjourney/">Midjourney</a> · <a href="/promty-dlya-stable-diffusion/">Stable Diffusion</a> · <a href="/promty-dlya-suno/">Suno</a></p>
+<p><b>Гайды:</b> <a href="/gaydy/kak-pisat-promty/">Как писать промты</a> · <a href="/gaydy/kakuyu-neyroset-vybrat/">Какую нейросеть выбрать</a> · <a href="/gaydy/promty-dlya-kartinok/">Как писать промты для картинок</a> · <a href="/gaydy/kak-nachat-rabotat-s-api/">Как начать работать с API нейросетей</a></p>
+<p><a href="https://t.me/promotekatech" target="_blank" rel="noopener">Наш Telegram-канал</a></p>
+<p>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · <a href="/">Промтотека</a></p>
+</footer>
+</div>
+</body>
+</html>
