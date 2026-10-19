@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Промты для программистов — 12 готовых шаблонов | Промтотека</title>
+<meta name="description" content="Объяснить код, найти баг, написать тесты, провести ревью, составить SQL-запрос или регулярное выражение. Скопируйте и вставьте в ChatGPT, Claude или…">
+<link rel="canonical" href="https://promoteka.tech/kod/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Промтотека">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Промты для программистов — 12 готовых шаблонов | Промтотека">
+<meta property="og:description" content="Объяснить код, найти баг, написать тесты, провести ревью, составить SQL-запрос или регулярное выражение. Скопируйте и вставьте в ChatGPT, Claude или…">
+<meta property="og:url" content="https://promoteka.tech/kod/">
+<meta property="og:image" content="https://promoteka.tech/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Промтотека", "item": "https://promoteka.tech/"}, {"@type": "ListItem", "position": 2, "name": "Код", "item": "https://promoteka.tech/kod/"}]}</script>
+<script>window.CATS={"Тексты": "/teksty/", "Работа": "/rabota/", "Маркетинг": "/marketing/", "Код": "/kod/", "Учёба": "/ucheba/", "Перевод": "/perevod/", "Жизнь": "/zhizn/", "Изображения": "/izobrazheniya/", "Видео": "/video/", "Музыка": "/muzyka/", "Системные": "/sistemnye/", "Приёмы": "/priemy/", "API": "/api/"}</script>
+<script src="/app.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<header>
+<ol class="crumbs" aria-label="Навигация"><li><a href="/">Промтотека</a></li><li>Код</li></ol>
+<h1>Промты для программистов</h1>
+<p>Объяснить код, найти баг, написать тесты, провести ревью, составить SQL-запрос или регулярное выражение.</p>
+</header>
+<input id="q" class="search" type="search" placeholder="Поиск в разделе" aria-label="Поиск">
+<nav class="tabs" id="tabs" aria-label="Разделы"><a class="tab" href="/">Все · 108</a><a class="tab" href="/teksty/">Тексты · 11</a><a class="tab" href="/rabota/">Работа · 11</a><a class="tab" href="/marketing/">Маркетинг · 8</a><a class="tab" href="/kod/" aria-current="page">Код · 12</a><a class="tab" href="/ucheba/">Учёба · 8</a><a class="tab" href="/perevod/">Перевод · 3</a><a class="tab" href="/zhizn/">Жизнь · 7</a><a class="tab" href="/izobrazheniya/">Изображения · 9</a><a class="tab" href="/video/">Видео · 4</a><a class="tab" href="/muzyka/">Музыка · 3</a><a class="tab" href="/sistemnye/">Системные · 5</a><a class="tab" href="/priemy/">Приёмы · 9</a><a class="tab" href="/api/">API · 18</a></nav>
+<p class="count" id="count">Найдено: 12</p>
+<main class="list" id="list" data-cat="Код">
+<article class="item">
+<div class="head"><h2><a href="/kod/obyasnit-kod/">Объяснить код</a></h2></div>
+<p class="desc">Построчный разбор незнакомого кода.</p><pre>Объясни, что делает этот код. Сначала одним предложением общую цель, затем по шагам. Укажи возможные ошибки и слабые места.
+
+Код:
+[вставьте код]</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button></div>
+</article><article class="item">
+<div class="head"><h2><a href="/kod/nayti-bag/">Найти баг</a></h2></div>
+<p class="desc">По ошибке и коду — причина и исправление.</p><pre>Код выдаёт ошибку. Найди причину и предложи исправление. Покажи только изменённые строки и объясни, почему так.
+
+Ошибка:
+[текст ошибки]
+
+Код:
+[код]</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button></div>
+</article><article class="item">
+<div class="head"><h2><a href="/kod/napisat-funktsiyu/">Написать функцию</a></h2></div>
+<p class="desc">Чёткое ТЗ — рабочий код.</p><pre>Напиши функцию на [язык]. Вход: [что принимает]. Выход: [что возвращает]. Условия: [ограничения, крайние случаи]. Добавь комментарии и пример вызова.</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button></div>
+</article><article class="item">
+<div class="head"><h2><a href="/kod/napisat-testy/">Написать тесты</a></h2></div>
+<p class="desc">Юнит-тесты, включая крайние случаи.</p><pre>Напиши юнит-тесты на [pytest / Jest / …] для функции ниже. Покрой обычные случаи, крайние значения и ошибки ввода.
+
+Код функции:
+[код]</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button></div>
+</article><article class="item">
+<div class="head"><h2><a href="/kod/revyu-koda/">Ревью кода</a></h2></div>
+<p class="desc">Как от строгого старшего разработчика.</p><pre>Проведи код-ревью как опытный разработчик. Оцени: читаемость, ошибки, безопасность, производительность. Для каждого замечания: строка, проблема, как исправить. В конце — 3 самых важных пункта.
+
+Код:
+[код]</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button></div>
+</article><article class="item">
+<div class="head"><h2><a href="/kod/refaktoring/">Рефакторинг</a></h2></div>
+<p class="desc">Чище, без изменения поведения.</p><pre>Сделай рефакторинг кода: понятные имена, маленькие функции, без дублирования. Поведение не меняй. Покажи итоговый код и список изменений.
+
+Код:
+[код]</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button></div>
+</article><article class="item">
+<div class="head"><h2><a href="/kod/perevesti-na-drugoy-yazyk/">Перевести на другой язык</a></h2></div>
+<p class="desc">Код с одного языка на другой.</p><pre>Перепиши этот код с [язык 1] на [язык 2]. Используй идиоматичные для [язык 2] приёмы и стандартную библиотеку. Отметь места, где поведение может отличаться.
+
+Код:
+[код]</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button></div>
+</article><article class="item">
+<div class="head"><h2><a href="/kod/sql-zapros/">SQL-запрос</a></h2></div>
+<p class="desc">Описание словами — запрос.</p><pre>Напиши SQL-запрос для [PostgreSQL / MySQL]. Таблицы: [названия и поля]. Нужно получить: [что]. Объясни запрос и предложи индексы, если они ускорят его.</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button></div>
+</article><article class="item">
+<div class="head"><h2><a href="/kod/regulyarnoe-vyrazhenie/">Регулярное выражение</a></h2></div>
+<p class="desc">С разбором каждой части.</p><pre>Составь регулярное выражение, которое находит [что]. Должно совпадать: [примеры]. Не должно: [примеры]. Объясни каждую часть выражения.</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button></div>
+</article><article class="item">
+<div class="head"><h2><a href="/kod/dokumentatsiya-readme/">Документация (README)</a></h2></div>
+<p class="desc">Описание проекта для GitHub.</p><pre>Напиши README.md для проекта. Разделы: что это, установка, быстрый старт с примером, настройки, лицензия. Коротко и по делу.
+
+О проекте:
+[описание, команды, стек]</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button></div>
+</article><article class="item">
+<div class="head"><h2><a href="/kod/soobshchenie-kommita/">Сообщение коммита</a></h2></div>
+<p class="desc">По диффу — понятный коммит.</p><pre>Напиши сообщение коммита по изменениям ниже. Первая строка — до 50 знаков, в повелительном наклонении. Затем пустая строка и 2–3 пункта, что и зачем изменено.
+
+Изменения:
+[git diff]</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button></div>
+</article><article class="item">
+<div class="head"><h2><a href="/kod/bash-komanda/">Bash-команда</a></h2></div>
+<p class="desc">Нужная команда без поиска в интернете.</p><pre>Напиши команду для [Linux / macOS / Windows PowerShell], которая [что сделать]. Объясни каждый флаг. Если команда что-то удаляет — предупреди.</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button></div>
+</article>
+</main>
+<p class="empty" id="empty" hidden></p>
+<footer>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · <a href="/">Промтотека</a></footer>
+</div>
+</body>
+</html>

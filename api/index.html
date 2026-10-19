@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Шпаргалки по API нейросетей — 18 готовых шаблонов | Промтотека</title>
+<meta name="description" content="Готовые запросы к API OpenAI, Claude, Gemini, Mistral, DeepSeek, YandexGPT, GigaChat, Ollama и других: curl, Python, JavaScript. Скопируйте и вставьте в…">
+<link rel="canonical" href="https://promoteka.tech/api/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Промтотека">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Шпаргалки по API нейросетей — 18 готовых шаблонов | Промтотека">
+<meta property="og:description" content="Готовые запросы к API OpenAI, Claude, Gemini, Mistral, DeepSeek, YandexGPT, GigaChat, Ollama и других: curl, Python, JavaScript. Скопируйте и вставьте в…">
+<meta property="og:url" content="https://promoteka.tech/api/">
+<meta property="og:image" content="https://promoteka.tech/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Промтотека", "item": "https://promoteka.tech/"}, {"@type": "ListItem", "position": 2, "name": "API", "item": "https://promoteka.tech/api/"}]}</script>
+<script>window.CATS={"Тексты": "/teksty/", "Работа": "/rabota/", "Маркетинг": "/marketing/", "Код": "/kod/", "Учёба": "/ucheba/", "Перевод": "/perevod/", "Жизнь": "/zhizn/", "Изображения": "/izobrazheniya/", "Видео": "/video/", "Музыка": "/muzyka/", "Системные": "/sistemnye/", "Приёмы": "/priemy/", "API": "/api/"}</script>
+<script src="/app.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<header>
+<ol class="crumbs" aria-label="Навигация"><li><a href="/">Промтотека</a></li><li>API</li></ol>
+<h1>Шпаргалки по API нейросетей</h1>
+<p>Готовые запросы к API OpenAI, Claude, Gemini, Mistral, DeepSeek, YandexGPT, GigaChat, Ollama и других: curl, Python, JavaScript.</p>
+</header>
+<input id="q" class="search" type="search" placeholder="Поиск в разделе" aria-label="Поиск">
+<nav class="tabs" id="tabs" aria-label="Разделы"><a class="tab" href="/">Все · 108</a><a class="tab" href="/teksty/">Тексты · 11</a><a class="tab" href="/rabota/">Работа · 11</a><a class="tab" href="/marketing/">Маркетинг · 8</a><a class="tab" href="/kod/">Код · 12</a><a class="tab" href="/ucheba/">Учёба · 8</a><a class="tab" href="/perevod/">Перевод · 3</a><a class="tab" href="/zhizn/">Жизнь · 7</a><a class="tab" href="/izobrazheniya/">Изображения · 9</a><a class="tab" href="/video/">Видео · 4</a><a class="tab" href="/muzyka/">Музыка · 3</a><a class="tab" href="/sistemnye/">Системные · 5</a><a class="tab" href="/priemy/">Приёмы · 9</a><a class="tab" href="/api/" aria-current="page">API · 18</a></nav>
+<p class="count" id="count">Найдено: 18</p>
+<main class="list" id="list" data-cat="API">
+<article class="item">
+<div class="head"><h2><a href="/api/openai-zapros-k-chatu/">OpenAI — запрос к чату</a></h2></div>
+<p class="desc">Ключ — в переменной окружения OPENAI_API_KEY.</p><pre>curl https://api.openai.com/v1/chat/completions \
+  -H &quot;Authorization: Bearer $OPENAI_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;model&quot;: &quot;[название модели]&quot;,
+    &quot;messages&quot;: [
+      {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;Ты полезный помощник.&quot;},
+      {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}
+    ]
+  }&#x27;</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://platform.openai.com/docs" target="_blank" rel="noopener">Документация →</a></div>
+</article><article class="item">
+<div class="head"><h2><a href="/api/openai-python/">OpenAI — Python</a></h2></div>
+<p class="desc">Официальная библиотека: pip install openai</p><pre>from openai import OpenAI
+
+client = OpenAI()  # ключ берётся из OPENAI_API_KEY
+
+resp = client.chat.completions.create(
+    model=&quot;[название модели]&quot;,
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}],
+)
+print(resp.choices[0].message.content)</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://platform.openai.com/docs" target="_blank" rel="noopener">Документация →</a></div>
+</article><article class="item">
+<div class="head"><h2><a href="/api/openai-kartinka/">OpenAI — картинка</a></h2></div>
+<p class="desc">Генерация изображения по тексту.</p><pre>curl https://api.openai.com/v1/images/generations \
+  -H &quot;Authorization: Bearer $OPENAI_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;model&quot;: &quot;[модель для картинок]&quot;,
+    &quot;prompt&quot;: &quot;кот в космосе, акварель&quot;,
+    &quot;size&quot;: &quot;1024x1024&quot;
+  }&#x27;</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://platform.openai.com/docs" target="_blank" rel="noopener">Документация →</a></div>
+</article><article class="item">
+<div class="head"><h2><a href="/api/anthropic-claude-soobshchenie/">Anthropic (Claude) — сообщение</a></h2></div>
+<p class="desc">Ключ — в ANTHROPIC_API_KEY. Заголовок версии обязателен.</p><pre>curl https://api.anthropic.com/v1/messages \
+  -H &quot;x-api-key: $ANTHROPIC_API_KEY&quot; \
+  -H &quot;anthropic-version: 2023-06-01&quot; \
+  -H &quot;content-type: application/json&quot; \
+  -d &#x27;{
+    &quot;model&quot;: &quot;[название модели]&quot;,
+    &quot;max_tokens&quot;: 1024,
+    &quot;system&quot;: &quot;Ты полезный помощник.&quot;,
+    &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}]
+  }&#x27;</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://docs.claude.com" target="_blank" rel="noopener">Документация →</a></div>
+</article><article class="item">
+<div class="head"><h2><a href="/api/anthropic-claude-python/">Anthropic (Claude) — Python</a></h2></div>
+<p class="desc">Официальная библиотека: pip install anthropic</p><pre>import anthropic
+
+client = anthropic.Anthropic()  # ключ из ANTHROPIC_API_KEY
+
+msg = client.messages.create(
+    model=&quot;[название модели]&quot;,
+    max_tokens=1024,
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}],
+)
+print(msg.content[0].text)</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://docs.claude.com" target="_blank" rel="noopener">Документация →</a></div>
+</article><article class="item">
+<div class="head"><h2><a href="/api/google-gemini-generatsiya/">Google Gemini — генерация</a></h2></div>
+<p class="desc">Ключ — в GEMINI_API_KEY, получить в Google AI Studio.</p><pre>curl &quot;https://generativelanguage.googleapis.com/v1beta/models/[название модели]:generateContent&quot; \
+  -H &quot;x-goog-api-key: $GEMINI_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;contents&quot;: [{&quot;parts&quot;: [{&quot;text&quot;: &quot;Привет!&quot;}]}]
+  }&#x27;</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://ai.google.dev" target="_blank" rel="noopener">Документация →</a></div>
+</article><article class="item">
+<div class="head"><h2><a href="/api/mistral/">Mistral</a></h2></div>
+<p class="desc">Формат как у OpenAI.</p><pre>curl https://api.mistral.ai/v1/chat/completions \
+  -H &quot;Authorization: Bearer $MISTRAL_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;model&quot;: &quot;[название модели]&quot;,
+    &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}]
+  }&#x27;</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://docs.mistral.ai" target="_blank" rel="noopener">Документация →</a></div>
+</article><article class="item">
+<div class="head"><h2><a href="/api/deepseek/">DeepSeek</a></h2></div>
+<p class="desc">Формат как у OpenAI.</p><pre>curl https://api.deepseek.com/chat/completions \
+  -H &quot;Authorization: Bearer $DEEPSEEK_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;model&quot;: &quot;[название модели]&quot;,
+    &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}]
+  }&#x27;</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://api-docs.deepseek.com" target="_blank" rel="noopener">Документация →</a></div>
+</article><article class="item">
+<div class="head"><h2><a href="/api/openrouter-mnogo-modeley-cherez-odin-klyuch/">OpenRouter — много моделей через один ключ</a></h2></div>
+<p class="desc">Формат как у OpenAI, модель указывается как «провайдер/модель».</p><pre>curl https://openrouter.ai/api/v1/chat/completions \
+  -H &quot;Authorization: Bearer $OPENROUTER_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;model&quot;: &quot;[провайдер/модель]&quot;,
+    &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}]
+  }&#x27;</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://openrouter.ai/docs" target="_blank" rel="noopener">Документация →</a></div>
+</article><article class="item">
+<div class="head"><h2><a href="/api/groq/">Groq</a></h2></div>
+<p class="desc">Очень быстрые ответы открытых моделей. Формат как у OpenAI.</p><pre>curl https://api.groq.com/openai/v1/chat/completions \
+  -H &quot;Authorization: Bearer $GROQ_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;model&quot;: &quot;[название модели]&quot;,
+    &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}]
+  }&#x27;</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://console.groq.com/docs" target="_blank" rel="noopener">Документация →</a></div>
+</article><article class="item">
+<div class="head"><h2><a href="/api/yandexgpt/">YandexGPT</a></h2></div>
+<p class="desc">Нужны API-ключ и идентификатор каталога в Yandex Cloud.</p><pre>curl https://llm.api.cloud.yandex.net/foundationModels/v1/completion \
+  -H &quot;Authorization: Api-Key $YANDEX_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;modelUri&quot;: &quot;gpt://[id каталога]/yandexgpt/latest&quot;,
+    &quot;completionOptions&quot;: {&quot;temperature&quot;: 0.6, &quot;maxTokens&quot;: &quot;2000&quot;},
+    &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;text&quot;: &quot;Привет!&quot;}]
+  }&#x27;</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://yandex.cloud/ru/docs/foundation-models/" target="_blank" rel="noopener">Документация →</a></div>
+</article><article class="item">
+<div class="head"><h2><a href="/api/gigachat/">GigaChat</a></h2></div>
+<p class="desc">Сначала получаем токен (живёт 30 минут), затем делаем запрос.</p><pre># 1. Токен доступа
+curl https://ngw.devices.sberbank.ru:9443/api/v2/oauth \
+  -H &quot;Authorization: Basic [ключ авторизации]&quot; \
+  -H &quot;RqUID: [любой uuid]&quot; \
+  -H &quot;Content-Type: application/x-www-form-urlencoded&quot; \
+  -d &quot;scope=GIGACHAT_API_PERS&quot;
+
+# 2. Запрос
+curl https://gigachat.devices.sberbank.ru/api/v1/chat/completions \
+  -H &quot;Authorization: Bearer [access_token]&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;model&quot;: &quot;GigaChat&quot;, &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}]}&#x27;</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://developers.sber.ru/docs/ru/gigachat/overview" target="_blank" rel="noopener">Документация →</a></div>
+</article><article class="item">
+<div class="head"><h2><a href="/api/ollama-lokalnaya-model/">Ollama — локальная модель</a></h2></div>
+<p class="desc">Бесплатно, на своём компьютере. Сначала: ollama pull [модель]</p><pre>curl http://localhost:11434/api/chat -d &#x27;{
+  &quot;model&quot;: &quot;[модель]&quot;,
+  &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}],
+  &quot;stream&quot;: false
+}&#x27;</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://ollama.com" target="_blank" rel="noopener">Документация →</a></div>
+</article><article class="item">
+<div class="head"><h2><a href="/api/javascript-fetch/">JavaScript — fetch</a></h2></div>
+<p class="desc">Запрос из Node.js или браузера (ключ не храните во фронтенде).</p><pre>const resp = await fetch(&quot;[адрес API]&quot;, {
+  method: &quot;POST&quot;,
+  headers: {
+    &quot;Authorization&quot;: `Bearer ${process.env.API_KEY}`,
+    &quot;Content-Type&quot;: &quot;application/json&quot;,
+  },
+  body: JSON.stringify({
+    model: &quot;[модель]&quot;,
+    messages: [{ role: &quot;user&quot;, content: &quot;Привет!&quot; }],
+  }),
+});
+const data = await resp.json();
+console.log(data);</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button></div>
+</article><article class="item">
+<div class="head"><h2><a href="/api/python-obshchiy-shablon/">Python — общий шаблон</a></h2></div>
+<p class="desc">Минимальный запрос через библиотеку requests.</p><pre>import os, requests
+
+resp = requests.post(
+    &quot;[адрес API]&quot;,
+    headers={&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;API_KEY&#x27;]}&quot;},
+    json={&quot;model&quot;: &quot;[модель]&quot;, &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}]},
+    timeout=60,
+)
+resp.raise_for_status()
+print(resp.json())</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button></div>
+</article><article class="item">
+<div class="head"><h2><a href="/api/potokovyy-otvet/">Потоковый ответ</a></h2></div>
+<p class="desc">Текст приходит по частям, как в чате.</p><pre>Добавьте в тело запроса:
+&quot;stream&quot;: true
+
+Ответ придёт как поток событий (Server-Sent Events): строки вида
+data: {...кусок ответа...}
+Последнее событие у OpenAI-совместимых API — data: [DONE]</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button></div>
+</article><article class="item">
+<div class="head"><h2><a href="/api/osnovnye-parametry/">Основные параметры</a></h2></div>
+<p class="desc">Что значат настройки запроса.</p><pre>temperature   0–2   творчество: 0 — точно и одинаково, 1+ — разнообразно
+max_tokens          предел длины ответа (1 токен ≈ 3–4 символа текста)
+top_p         0–1   альтернатива temperature, меняйте что-то одно
+stop                строки, на которых ответ обрывается
+system              инструкция-роль для всей переписки</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button></div>
+</article><article class="item">
+<div class="head"><h2><a href="/api/klyuch-v-fayle-env/">Ключ в файле .env</a></h2></div>
+<p class="desc">Чтобы ключ не попал в код и в Git.</p><pre># файл .env (добавьте его в .gitignore)
+OPENAI_API_KEY=sk-...
+ANTHROPIC_API_KEY=sk-ant-...
+
+# Python: pip install python-dotenv
+from dotenv import load_dotenv
+load_dotenv()</pre>
+<div class="row"><button class="btn" data-copy>Копировать</button></div>
+</article>
+</main>
+<p class="empty" id="empty" hidden></p>
+<footer>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · <a href="/">Промтотека</a></footer>
+</div>
+</body>
+</html>
