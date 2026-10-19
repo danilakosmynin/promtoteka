@@ -24,7 +24,7 @@ CATS = {
     "Работа": ("rabota", "Промты для работы", "Деловые письма, резюме, собеседования, отчёты, встречи и таблицы — промты, которые экономят рабочее время.", "промт для нейросети"),
     "Маркетинг": ("marketing", "Промты для маркетинга", "Посты, контент-план, описания товаров, реклама, рассылки и анализ конкурентов.", "промт для маркетинга"),
     "Код": ("kod", "Промты для программистов", "Объяснить код, найти баг, написать тесты, провести ревью, составить SQL-запрос или регулярное выражение.", "промт для программиста"),
-    "Задачи": ("zadachi", "Промты для задач по программированию", "Решить задачу с объяснением, получить подсказку, найти ошибку в решении, ускорить код, придумать тесты — для школы, вуза, олимпиад и собеседований.", "промт для задач по программированию"),
+    "Задачи": ("zadachi", "Промты для задач по программированию", "Решить задачу с объяснением, получить подсказку, найти ошибку в решении, ускорить код, придумать тесты — для школы, вуза, олимпиад и собеседований.", "промт для задач"),
     "Учёба": ("ucheba", "Промты для учёбы", "Нейросеть как репетитор: планы изучения, карточки, тесты, конспекты и практика языка.", "промт для учёбы"),
     "Перевод": ("perevod", "Промты для перевода", "Точный перевод, локализация и глоссарий терминов.", "промт для перевода"),
     "Жизнь": ("zhizn", "Промты на каждый день", "Меню, рецепты, поездки, подарки, бюджет и сложные разговоры.", "промт для нейросети"),
@@ -70,10 +70,12 @@ TRANSLIT = dict(zip("абвгдеёжзийклмнопрстуфхцчшщъы�
     ["a","b","v","g","d","e","e","zh","z","i","y","k","l","m","n","o","p","r","s","t","u","f","kh","ts","ch","sh","shch","","y","","e","yu","ya"]))
 
 # Поля, куда обычно вставляют длинный текст, — многострочные
-LONG = re.compile(r"вставьте|текст|код|список|описани|заметк|данн|расшифров|план|услови|решени|письм|отзыв|вакан|резюме|материал|документ|стать|изменени|стек|запрос|сценари|рецепт|расход|правила|субтитр|строки|мнение|объяснение|идея|оригинал|перевод", re.I)
+LONG = re.compile(r"вставьте|текст|код|список|описани|заметк|данн|расшифров|план|услови|решени|письм|отзыв|вакан|резюме|материал|документ|стать|изменени|стек|запрос|сценари|рецепт|расход|правила|субтитр|строки|мнение|объяснение|идея|оригинал|перевод|diff", re.I)
 
-# Заполняемое место: [в скобках], с кириллицей и без кавычек и фигурных скобок (чтобы не ловить массивы в коде)
-FIELD = re.compile(r"\[([^\[\]\n\"{}]*[а-яё][^\[\]\n\"{}]*)\]", re.I)
+# Заполняемое место: [в скобках], с буквами и без кавычек и фигурных скобок (чтобы не ловить массивы в коде).
+# В разделах с кодом (NO_CHAT) полями считаем только места с кириллицей — иначе поймаем [0], [DONE] и т. п.
+FIELD = re.compile(r"\[([^\[\]\n\"{}]*[a-zа-яё][^\[\]\n\"{}]*)\]", re.I)
+FIELD_CODE = re.compile(r"\[([^\[\]\n\"{}]*[а-яё][^\[\]\n\"{}]*)\]", re.I)
 
 
 def slugify(s):
@@ -117,7 +119,7 @@ def footer(ai_pages, guides):
     ai = [(a["name"], f"/{a['slug']}/", "") for a in ai_pages]
     gd = [(g["h1"], f"/{GUIDES_DIR}/{g['slug']}/", "") for g in guides]
     ext = ' target="_blank" rel="noopener"'
-    proj = [("Все промты", "/", ""), ("Избранное", "/#izbrannoe", ""), ("Мои промты", "/#moi", "")]
+    proj = [("Все разделы", "/#razdely", ""), ("Избранное", "/#izbrannoe", ""), ("Мои промты", "/#moi", "")]
     if CFG.get("telegram_channel"):
         proj.append(("Telegram-канал", CFG["telegram_channel"], ext))
     if CFG.get("suggest_url"):
@@ -133,6 +135,8 @@ FOOTER = ""  # заполняется в main()
 
 def page(*, title, desc, path, body, ld=None, og_type="website"):
     url = SITE + path
+    if len(title) > 70 and title.endswith(f" | {NAME}"):   # длинный заголовок обрезается в выдаче — убираем хвост
+        title = title[: -len(f" | {NAME}")]
     site_js = json.dumps({"cats": {c: f"/{v[0]}/" for c, v in CATS.items()}, "metrika": str(CFG.get("metrika_id") or "")}, ensure_ascii=False)
     m_head, m_body = metrika()
     lds = "".join(f'\n<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in (ld or []))
@@ -159,9 +163,9 @@ def page(*, title, desc, path, body, ld=None, og_type="website"):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="/style.css?v=7">{lds}
+<link rel="stylesheet" href="/style.css?v=8">{lds}
 <script>window.SITE={site_js}</script>
-<script src="/app.js?v=8" defer></script>{m_head}
+<script src="/app.js?v=9" defer></script>{m_head}
 </head>
 <body>
 {m_body}<div class="wrap">
@@ -186,7 +190,7 @@ def crumbs_html(items):
 
 
 def tabs(prompts, current):
-    out = [f'<a class="tab" href="/"{" aria-current=\"page\"" if current is None else ""}>Все · {len(prompts)}</a>']
+    out = ['<a class="tab" href="/#razdely">← Все разделы</a>']
     for c, v in CATS.items():
         n = sum(1 for p in prompts if p["cat"] == c)
         cur = ' aria-current="page"' if c == current else ""
@@ -311,7 +315,7 @@ def main():
             slug = f"{base}-{i}"; i += 1
         seen.add((p["cat"], slug))
         p["path"] = f"/{CATS[p['cat']][0]}/{slug}/"
-        p["fields"] = list(dict.fromkeys(FIELD.findall(p["text"])))
+        p["fields"] = list(dict.fromkeys((FIELD_CODE if p["cat"] in NO_CHAT else FIELD).findall(p["text"])))
         by_title[p["title"]] = p
 
     def by_titles(titles, where):
@@ -479,7 +483,6 @@ def main():
                           f'<p class="hint more"><a class="link" href="/{CATS[c][0]}/">Все {len(all_in)} в разделе «{e(c)}» →</a></p></section>')
         if a["api"]:
             blocks.append(f'<section class="related"><h2>API {e(a["name"])}</h2>{link_list(by_titles(a["api"], "ai.json"))}</section>')
-        total = sum(1 for p in prompts if p["cat"] in a["cats"])
         body = f"""<header>
 {crumbs_html([(NAME, "/"), (f"Промты для {a['name']}", None)])}
 <h1>Промты для {e(a["name"])}</h1>
@@ -487,7 +490,7 @@ def main():
 <div class="article">{a["intro"]}</div>
 {"".join(blocks)}"""
         write(f"{a['slug']}/index.html", page(
-            title=f"Промты для {a['name']} на русском — {total} готовых шаблонов | {NAME}",
+            title=f"Промты для {a['name']} на русском — готовые шаблоны | {NAME}",
             desc=cut(f"Готовые промты для {a['name']} на русском: " + ", ".join(CATS[c][1].lower().replace("промты для ", "").replace("промты на ", "") for c in a["cats"]) + ". Скопируйте, заполните поля и вставьте."),
             path=path, body=body, ld=[crumbs_ld([(NAME, "/"), (f"Промты для {a['name']}", path)])]))
 

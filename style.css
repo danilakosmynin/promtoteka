@@ -198,5 +198,5 @@ footer{gap:20px;margin-top:20px}
 .cat .num{position:absolute;top:14px;right:14px}
 .cat .txt span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 @media (max-width:760px){.cats{grid-template-columns:1fr 1fr 1fr}}
-@media (max-width:560px){.cats{grid-template-columns:1fr 1fr;gap:8px}.cat{padding:14px}.cat .ico{width:40px;height:40px;font-size:22px}.cat .txt b{font-size:15px}.cat .txt span{font-size:12px}.gcards{grid-template-columns:1fr}}
+@media (max-width:560px){.cats{grid-template-columns:1fr 1fr;gap:8px}.cats>:last-child:nth-child(odd){grid-column:1/-1}.cat{padding:14px}.cat .ico{width:40px;height:40px;font-size:22px}.cat .txt b{font-size:15px}.cat .txt span{font-size:12px}.gcards{grid-template-columns:1fr}}
 .item .expand{align-self:flex-start;margin-top:-4px}

@@ -63,7 +63,8 @@ function renderTabs(){
   quick.hidden = !out.length;
 }
 
-// ───────── Поиск
+// ───────── Поиск (по названию, описанию, тексту и разделу — без надписей на кнопках)
+const searchText = el => el._s ??= [...el.querySelectorAll("h2, .desc, pre, .tag")].map(n => n.textContent).join(" ").toLowerCase();
 const q = $("q"), count = $("count"), empty = $("empty"), results = $("results"), home = $("home");
 function filter(){
   if (!list) return;
@@ -71,7 +72,7 @@ function filter(){
   let n = 0;
   for (const el of list.querySelectorAll(".item")) {
     const inMode = m === "mine" ? el.classList.contains("own") : m === "fav" ? favs.includes(el.dataset.path) : true;
-    const show = inMode && (!s || el.textContent.toLowerCase().includes(s));
+    const show = inMode && (!s || searchText(el).includes(s));
     el.hidden = !show; if (show) n++;
   }
   if (count) count.textContent = n ? `Найдено: ${n}` : "";
@@ -95,7 +96,13 @@ function markLong(){
 }
 const refresh = () => { renderMine(); renderTabs(); paintFavs(); filter(); markLong(); };
 q?.addEventListener("input", () => { filter(); markLong(); });
-addEventListener("hashchange", refresh);
+addEventListener("hashchange", () => {
+  const h = (() => { try { return decodeURIComponent(location.hash.slice(1)); } catch(e){ return ""; } })();
+  if (SITE.cats[h]) { location.replace(SITE.cats[h]); return; }
+  refresh();
+});
+// На странице раздела прокручиваем ряд разделов к текущему
+document.querySelector(".tabs [aria-current]")?.scrollIntoView({block: "nearest", inline: "center"});
 
 // ───────── Заполнение полей на странице промта
 const pre = document.querySelector(".prompt pre[data-src]");
@@ -215,7 +222,7 @@ if (form) {
     mine = [item, ...mine];
     if (!store.set(KEY, mine)) { mine = mine.slice(1); note("Браузер не даёт сохранить (приватный режим?).", true); return; }
     $("f-title").value = ""; $("f-desc").value = ""; $("f-text").value = "";
-    note("Сохранено. Промт появился в разделе «Мои».");
+    note(`Сохранено. Промт появился во вкладке «Мои промты» под поиском${item.cat !== "Мои" ? ` и в разделе «${item.cat}»` : ""}.`);
     refresh();
   });
 }

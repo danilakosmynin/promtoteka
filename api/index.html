@@ -21,10 +21,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="/style.css?v=7">
+<link rel="stylesheet" href="/style.css?v=8">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Промтотека", "item": "https://promoteka.tech/"}, {"@type": "ListItem", "position": 2, "name": "API", "item": "https://promoteka.tech/api/"}]}</script>
 <script>window.SITE={"cats": {"Тексты": "/teksty/", "Работа": "/rabota/", "Маркетинг": "/marketing/", "Код": "/kod/", "Задачи": "/zadachi/", "Учёба": "/ucheba/", "Перевод": "/perevod/", "Жизнь": "/zhizn/", "Изображения": "/izobrazheniya/", "Видео": "/video/", "Музыка": "/muzyka/", "Системные": "/sistemnye/", "Приёмы": "/priemy/", "API": "/api/"}, "metrika": "113671980"}</script>
-<script src="/app.js?v=8" defer></script>
+<script src="/app.js?v=9" defer></script>
 <script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js?id=113671980","ym");
 ym(113671980,"init",{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});</script>
 </head>
@@ -39,7 +39,7 @@ ym(113671980,"init",{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",
 <p>Готовые запросы к API OpenAI, Claude, Gemini, Mistral, DeepSeek, YandexGPT, GigaChat, Ollama и других: curl, Python, JavaScript.</p>
 </header>
 <input id="q" class="search" type="search" placeholder="Поиск в разделе" aria-label="Поиск">
-<nav class="tabs" id="tabs" aria-label="Разделы"><a class="tab" href="/">Все · 326</a><a class="tab" href="/teksty/">Тексты · 31</a><a class="tab" href="/rabota/">Работа · 36</a><a class="tab" href="/marketing/">Маркетинг · 30</a><a class="tab" href="/kod/">Код · 34</a><a class="tab" href="/zadachi/">Задачи · 18</a><a class="tab" href="/ucheba/">Учёба · 26</a><a class="tab" href="/perevod/">Перевод · 11</a><a class="tab" href="/zhizn/">Жизнь · 29</a><a class="tab" href="/izobrazheniya/">Изображения · 24</a><a class="tab" href="/video/">Видео · 14</a><a class="tab" href="/muzyka/">Музыка · 11</a><a class="tab" href="/sistemnye/">Системные · 15</a><a class="tab" href="/priemy/">Приёмы · 19</a><a class="tab" href="/api/" aria-current="page">API · 28</a></nav>
+<nav class="tabs" id="tabs" aria-label="Разделы"><a class="tab" href="/#razdely">← Все разделы</a><a class="tab" href="/teksty/">Тексты · 31</a><a class="tab" href="/rabota/">Работа · 36</a><a class="tab" href="/marketing/">Маркетинг · 30</a><a class="tab" href="/kod/">Код · 34</a><a class="tab" href="/zadachi/">Задачи · 18</a><a class="tab" href="/ucheba/">Учёба · 26</a><a class="tab" href="/perevod/">Перевод · 11</a><a class="tab" href="/zhizn/">Жизнь · 29</a><a class="tab" href="/izobrazheniya/">Изображения · 24</a><a class="tab" href="/video/">Видео · 14</a><a class="tab" href="/muzyka/">Музыка · 11</a><a class="tab" href="/sistemnye/">Системные · 15</a><a class="tab" href="/priemy/">Приёмы · 19</a><a class="tab" href="/api/" aria-current="page">API · 28</a></nav>
 <p class="count" id="count">Найдено: 28</p>
 <main class="list" id="list" data-cat="API">
 <article class="item" data-path="/api/openai-zapros-k-chatu/">
@@ -166,7 +166,11 @@ print(msg.content[0].text)</pre><button class="link expand" type="button" data-e
 <div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/yandexgpt/">Заполнить поля →</a><a class="link" href="https://yandex.cloud/ru/docs/foundation-models/" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/yandexgpt/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
 </article><article class="item" data-path="/api/gigachat/">
 <div class="head"><h2><a href="/api/gigachat/">GigaChat</a></h2></div>
-<p class="desc">Сначала получаем токен (живёт 30 минут), затем делаем запрос.</p><pre class="clamp"># 1. Токен доступа
+<p class="desc">Сначала получаем токен (живёт 30 минут), затем делаем запрос.</p><pre class="clamp"># Если curl пишет «SSL certificate problem» — скачайте корневой сертификат
+# НУЦ Минцифры (russian_trusted_root_ca.cer) с Госуслуг и добавьте к запросам:
+#   --cacert russian_trusted_root_ca.cer
+
+# 1. Токен доступа
 curl https://ngw.devices.sberbank.ru:9443/api/v2/oauth \
   -H &quot;Authorization: Basic [ключ авторизации]&quot; \
   -H &quot;RqUID: [любой uuid]&quot; \
@@ -189,7 +193,7 @@ curl https://gigachat.devices.sberbank.ru/api/v1/chat/completions \
 <div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/ollama-lokalnaya-model/">Заполнить поля →</a><a class="link" href="https://ollama.com" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/ollama-lokalnaya-model/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
 </article><article class="item" data-path="/api/javascript-fetch/">
 <div class="head"><h2><a href="/api/javascript-fetch/">JavaScript — fetch</a></h2></div>
-<p class="desc">Запрос из Node.js или браузера (ключ не храните во фронтенде).</p><pre class="clamp">const resp = await fetch(&quot;[адрес API]&quot;, {
+<p class="desc">Запрос из Node.js 18+. Ключ не храните в коде сайта — его увидит любой посетитель.</p><pre class="clamp">const resp = await fetch(&quot;[адрес API]&quot;, {
   method: &quot;POST&quot;,
   headers: {
     &quot;Authorization&quot;: `Bearer ${process.env.API_KEY}`,
@@ -227,11 +231,12 @@ data: {...кусок ответа...}
 <div class="row"><button class="btn" data-copy>Копировать</button><button class="star" type="button" data-fav="/api/potokovyy-otvet/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
 </article><article class="item" data-path="/api/osnovnye-parametry/">
 <div class="head"><h2><a href="/api/osnovnye-parametry/">Основные параметры</a></h2></div>
-<p class="desc">Что значат настройки запроса.</p><pre class="clamp">temperature   0–2   творчество: 0 — точно и одинаково, 1+ — разнообразно
-max_tokens          предел длины ответа (1 токен ≈ 3–4 символа текста)
+<p class="desc">Что значат настройки запроса.</p><pre class="clamp">temperature   0–2   творчество: 0 — точно и одинаково, 1+ — разнообразно (у Claude 0–1)
+max_tokens          предел длины ответа (1 токен ≈ 2–4 символа русского текста)
 top_p         0–1   альтернатива temperature, меняйте что-то одно
 stop                строки, на которых ответ обрывается
-system              инструкция-роль для всей переписки</pre><button class="link expand" type="button" data-expand hidden>Показать полностью ↓</button>
+system              инструкция-роль для всей переписки: у OpenAI-совместимых —
+                    сообщение с role: &quot;system&quot;, у Claude — отдельное поле system</pre><button class="link expand" type="button" data-expand hidden>Показать полностью ↓</button>
 <div class="row"><button class="btn" data-copy>Копировать</button><button class="star" type="button" data-fav="/api/osnovnye-parametry/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
 </article><article class="item" data-path="/api/klyuch-v-fayle-env/">
 <div class="head"><h2><a href="/api/klyuch-v-fayle-env/">Ключ в файле .env</a></h2></div>
@@ -398,7 +403,7 @@ print(resp.choices[0].message.content)
 </main>
 <p class="empty" id="empty" hidden></p>
 <footer>
-<div class="fcols"><div><h3>Разделы</h3><ul><li><a href="/teksty/">Тексты</a></li><li><a href="/rabota/">Работа</a></li><li><a href="/marketing/">Маркетинг</a></li><li><a href="/kod/">Код</a></li><li><a href="/zadachi/">Задачи</a></li><li><a href="/ucheba/">Учёба</a></li><li><a href="/perevod/">Перевод</a></li><li><a href="/zhizn/">Жизнь</a></li><li><a href="/izobrazheniya/">Изображения</a></li><li><a href="/video/">Видео</a></li><li><a href="/muzyka/">Музыка</a></li><li><a href="/sistemnye/">Системные</a></li><li><a href="/priemy/">Приёмы</a></li><li><a href="/api/">API</a></li></ul></div><div><h3>Нейросети</h3><ul><li><a href="/promty-dlya-chatgpt/">ChatGPT</a></li><li><a href="/promty-dlya-claude/">Claude</a></li><li><a href="/promty-dlya-gigachat/">GigaChat</a></li><li><a href="/promty-dlya-yandexgpt/">YandexGPT</a></li><li><a href="/promty-dlya-deepseek/">DeepSeek</a></li><li><a href="/promty-dlya-midjourney/">Midjourney</a></li><li><a href="/promty-dlya-stable-diffusion/">Stable Diffusion</a></li><li><a href="/promty-dlya-suno/">Suno</a></li></ul></div><div><h3>Гайды</h3><ul><li><a href="/gaydy/kak-pisat-promty/">Как писать промты</a></li><li><a href="/gaydy/kakuyu-neyroset-vybrat/">Какую нейросеть выбрать</a></li><li><a href="/gaydy/promty-dlya-kartinok/">Как писать промты для картинок</a></li><li><a href="/gaydy/kak-nachat-rabotat-s-api/">Как начать работать с API нейросетей</a></li></ul></div><div><h3>Проект</h3><ul><li><a href="/">Все промты</a></li><li><a href="/#izbrannoe">Избранное</a></li><li><a href="/#moi">Мои промты</a></li><li><a href="https://t.me/promotekatech" target="_blank" rel="noopener">Telegram-канал</a></li></ul></div></div>
+<div class="fcols"><div><h3>Разделы</h3><ul><li><a href="/teksty/">Тексты</a></li><li><a href="/rabota/">Работа</a></li><li><a href="/marketing/">Маркетинг</a></li><li><a href="/kod/">Код</a></li><li><a href="/zadachi/">Задачи</a></li><li><a href="/ucheba/">Учёба</a></li><li><a href="/perevod/">Перевод</a></li><li><a href="/zhizn/">Жизнь</a></li><li><a href="/izobrazheniya/">Изображения</a></li><li><a href="/video/">Видео</a></li><li><a href="/muzyka/">Музыка</a></li><li><a href="/sistemnye/">Системные</a></li><li><a href="/priemy/">Приёмы</a></li><li><a href="/api/">API</a></li></ul></div><div><h3>Нейросети</h3><ul><li><a href="/promty-dlya-chatgpt/">ChatGPT</a></li><li><a href="/promty-dlya-claude/">Claude</a></li><li><a href="/promty-dlya-gigachat/">GigaChat</a></li><li><a href="/promty-dlya-yandexgpt/">YandexGPT</a></li><li><a href="/promty-dlya-deepseek/">DeepSeek</a></li><li><a href="/promty-dlya-midjourney/">Midjourney</a></li><li><a href="/promty-dlya-stable-diffusion/">Stable Diffusion</a></li><li><a href="/promty-dlya-suno/">Suno</a></li></ul></div><div><h3>Гайды</h3><ul><li><a href="/gaydy/kak-pisat-promty/">Как писать промты</a></li><li><a href="/gaydy/kakuyu-neyroset-vybrat/">Какую нейросеть выбрать</a></li><li><a href="/gaydy/promty-dlya-kartinok/">Как писать промты для картинок</a></li><li><a href="/gaydy/kak-nachat-rabotat-s-api/">Как начать работать с API нейросетей</a></li></ul></div><div><h3>Проект</h3><ul><li><a href="/#razdely">Все разделы</a></li><li><a href="/#izbrannoe">Избранное</a></li><li><a href="/#moi">Мои промты</a></li><li><a href="https://t.me/promotekatech" target="_blank" rel="noopener">Telegram-канал</a></li></ul></div></div>
 <p>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · © Промтотека</p>
 </footer>
 </div>
