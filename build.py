@@ -71,12 +71,15 @@ CFG = load_json("site.json")
 
 
 def metrika():
+    """Код счётчика Яндекс Метрики (в <head>) и запасной пиксель для браузеров без JS (в <body>)."""
     i = str(CFG.get("metrika_id") or "").strip()
     if not i:
-        return ""
-    return f"""
-<script>(function(m,e,t,r,i,k,a){{m[i]=m[i]||function(){{(m[i].a=m[i].a||[]).push(arguments)}};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){{if(document.scripts[j].src===r){{return;}}}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym({i},"init",{{clickmap:true,trackLinks:true,accurateTrackBounce:true}});</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/{i}" style="position:absolute;left:-9999px" alt=""></div></noscript>"""
+        return "", ""
+    head = f"""
+<script>(function(m,e,t,r,i,k,a){{m[i]=m[i]||function(){{(m[i].a=m[i].a||[]).push(arguments)}};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){{if(document.scripts[j].src===r){{return;}}}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}})(window,document,"script","https://mc.yandex.ru/metrika/tag.js?id={i}","ym");
+ym({i},"init",{{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true}});</script>"""
+    body = f'<noscript><div><img src="https://mc.yandex.ru/watch/{i}" style="position:absolute;left:-9999px" alt=""></div></noscript>\n'
+    return head, body
 
 
 def footer(ai_pages, guides):
@@ -101,6 +104,7 @@ FOOTER = ""  # заполняется в main()
 def page(*, title, desc, path, body, ld=None, og_type="website"):
     url = SITE + path
     site_js = json.dumps({"cats": {c: f"/{v[0]}/" for c, v in CATS.items()}, "metrika": str(CFG.get("metrika_id") or "")}, ensure_ascii=False)
+    m_head, m_body = metrika()
     lds = "".join(f'\n<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in (ld or []))
     return f"""<!doctype html>
 <html lang="ru">
@@ -127,10 +131,10 @@ def page(*, title, desc, path, body, ld=None, og_type="website"):
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
 <link rel="stylesheet" href="/style.css?v=3">{lds}
 <script>window.SITE={site_js}</script>
-<script src="/app.js?v=3" defer></script>{metrika()}
+<script src="/app.js?v=3" defer></script>{m_head}
 </head>
 <body>
-<div class="wrap">
+{m_body}<div class="wrap">
 <div class="top"><a class="logo" href="/"><img src="/favicon.svg?v=2" width="24" height="24" alt="">{NAME}</a>
 <nav><a href="/{GUIDES_DIR}/">Гайды</a><button class="theme" id="theme" type="button" aria-label="Сменить тему" title="Сменить тему"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg></button></nav></div>
 {body}
