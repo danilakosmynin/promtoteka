@@ -50,22 +50,21 @@ function renderMine(){
     </article>`).join(""));
 }
 
+// Быстрые ссылки на главной под поиском: избранное, свои промты и возврат к разделам
 function renderTabs(){
-  const tabs = $("tabs");
-  if (!tabs || pageCat !== "") return;
-  tabs.querySelectorAll(".tab.extra").forEach(n => n.remove());
-  const extra = [];
-  if (favs.length) extra.push(`<a class="tab extra" href="/#izbrannoe" data-mode="fav">★ Избранное · ${favs.length}</a>`);
-  if (mine.length) extra.push(`<a class="tab extra" href="/#moi" data-mode="mine">Мои · ${mine.length}</a>`);
-  tabs.children[0].insertAdjacentHTML("afterend", extra.join(""));
-  for (const t of tabs.querySelectorAll(".tab")) {
-    const cur = t === tabs.children[0] ? mode() === "" : t.dataset.mode === mode();
-    if (t.dataset.mode || t === tabs.children[0]) cur ? t.setAttribute("aria-current", "page") : t.removeAttribute("aria-current");
-  }
+  const quick = $("quick");
+  if (!quick) return;
+  const m = mode(), cur = x => m === x ? ' aria-current="page"' : "";
+  const out = [];
+  if (m) out.push(`<a class="tab" href="/">← Все разделы</a>`);
+  if (favs.length || m === "fav") out.push(`<a class="tab" href="/#izbrannoe"${cur("fav")}>★ Избранное · ${favs.length}</a>`);
+  if (mine.length || m === "mine") out.push(`<a class="tab" href="/#moi"${cur("mine")}>Мои промты · ${mine.length}</a>`);
+  quick.innerHTML = out.join("");
+  quick.hidden = !out.length;
 }
 
 // ───────── Поиск
-const q = $("q"), count = $("count"), empty = $("empty"), picks = $("picks");
+const q = $("q"), count = $("count"), empty = $("empty"), results = $("results"), home = $("home");
 function filter(){
   if (!list) return;
   const s = q ? q.value.trim().toLowerCase() : "", m = mode();
@@ -76,16 +75,26 @@ function filter(){
     el.hidden = !show; if (show) n++;
   }
   if (count) count.textContent = n ? `Найдено: ${n}` : "";
-  if (picks) picks.hidden = !!(s || m);
+  // На главной результаты показываются вместо полок с разделами
+  if (results && home) { const active = !!(s || m); results.hidden = !active; home.hidden = active; }
   if (empty) {
     empty.hidden = n > 0;
-    empty.textContent = s ? "Ничего не найдено. Попробуйте другое слово или раздел «Все»."
-      : m === "mine" ? "Здесь появятся ваши промты. Нажмите «Добавить свой промт» выше."
+    empty.textContent = s ? "Ничего не найдено. Попробуйте другое слово или откройте раздел."
+      : m === "mine" ? "Здесь появятся ваши промты. Добавить свой — внизу главной страницы."
       : m === "fav" ? "Здесь появятся промты, отмеченные звёздочкой ☆." : "Ничего не найдено.";
   }
 }
-const refresh = () => { renderMine(); renderTabs(); paintFavs(); filter(); };
-q?.addEventListener("input", filter);
+// Кнопку «Развернуть» показываем только у карточек, где текст обрезан
+function markLong(){
+  for (const b of document.querySelectorAll(".item [data-expand][hidden]")) {
+    const box = b.closest(".item"), pre = box.querySelector("pre");
+    if (box.hidden || !pre.clientHeight) continue;
+    if (pre.scrollHeight > pre.clientHeight + 2) b.hidden = false;
+    else pre.classList.remove("clamp");
+  }
+}
+const refresh = () => { renderMine(); renderTabs(); paintFavs(); filter(); markLong(); };
+q?.addEventListener("input", () => { filter(); markLong(); });
 addEventListener("hashchange", refresh);
 
 // ───────── Заполнение полей на странице промта
@@ -165,6 +174,8 @@ document.addEventListener("click", e => {
     goal("open_" + o.dataset.open);
     return;
   }
+  const x = e.target.closest("[data-expand]");
+  if (x) { const open = x.closest(".item").classList.toggle("open"); x.textContent = open ? "Свернуть ↑" : "Показать полностью ↓"; return; }
   const f = e.target.closest("[data-fav]");
   if (f) {
     const p = f.dataset.fav;

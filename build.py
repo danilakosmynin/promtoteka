@@ -36,6 +36,33 @@ CATS = {
     "API": ("api", "Шпаргалки по API нейросетей", "Готовые запросы к API OpenAI, Claude, Gemini, Mistral, DeepSeek, YandexGPT, GigaChat, Ollama и других: curl, Python, JavaScript.", "пример запроса к API"),
 }
 
+# Значок и короткое описание раздела для карточки на главной
+CAT_CARD = {
+    "Тексты": ("✍️", "Сократить, исправить, переписать, придумать"),
+    "Работа": ("💼", "Письма, резюме, отчёты, встречи"),
+    "Маркетинг": ("📈", "Посты, реклама, рассылки, описания"),
+    "Перевод": ("🌍", "Перевод, локализация, проверка"),
+    "Учёба": ("🎓", "Репетитор, конспекты, экзамены"),
+    "Код": ("👨‍💻", "Объяснить, отладить, протестировать"),
+    "Задачи": ("🧮", "Решения, подсказки, тесты, алгоритмы"),
+    "API": ("🔌", "Запросы к OpenAI, Claude, GigaChat"),
+    "Изображения": ("🎨", "Midjourney, Stable Diffusion, Кандинский"),
+    "Видео": ("🎬", "Сценарии, ролики, Sora и Kling"),
+    "Музыка": ("🎵", "Песни для Suno, тексты, озвучка"),
+    "Жизнь": ("🏡", "Меню, поездки, покупки, дела"),
+    "Приёмы": ("🧠", "Как писать промты, чтобы работало"),
+    "Системные": ("⚙️", "Готовые инструкции для нейросети"),
+}
+
+# Полки на главной: какие разделы рядом
+SHELVES = [
+    ("Тексты и работа", ["Тексты", "Работа", "Маркетинг", "Перевод"]),
+    ("Учёба и код", ["Учёба", "Код", "Задачи", "API"]),
+    ("Творчество", ["Изображения", "Видео", "Музыка"]),
+    ("Повседневное", ["Жизнь"]),
+    ("Мастерство промтов", ["Приёмы", "Системные"]),
+]
+
 # Разделы, где текст — код или параметры, а не промт для чата
 NO_CHAT = {"API"}
 
@@ -84,18 +111,20 @@ ym({i},"init",{{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",refer
 
 
 def footer(ai_pages, guides):
-    ai = " · ".join(f'<a href="/{a["slug"]}/">{e(a["name"])}</a>' for a in ai_pages)
-    gd = " · ".join(f'<a href="/{GUIDES_DIR}/{g["slug"]}/">{e(g["h1"])}</a>' for g in guides)
-    extra = []
+    def col(title, links):
+        return f'<div><h3>{title}</h3><ul>' + "".join(f'<li><a href="{h}"{x}>{e(t)}</a></li>' for t, h, x in links) + "</ul></div>"
+    cats = [(c, f"/{v[0]}/", "") for c, v in CATS.items()]
+    ai = [(a["name"], f"/{a['slug']}/", "") for a in ai_pages]
+    gd = [(g["h1"], f"/{GUIDES_DIR}/{g['slug']}/", "") for g in guides]
+    ext = ' target="_blank" rel="noopener"'
+    proj = [("Все промты", "/", ""), ("Избранное", "/#izbrannoe", ""), ("Мои промты", "/#moi", "")]
     if CFG.get("telegram_channel"):
-        extra.append(f'<a href="{e(CFG["telegram_channel"])}" target="_blank" rel="noopener">Наш Telegram-канал</a>')
+        proj.append(("Telegram-канал", CFG["telegram_channel"], ext))
     if CFG.get("suggest_url"):
-        extra.append(f'<a href="{e(CFG["suggest_url"])}" target="_blank" rel="noopener">Предложить промт</a>')
-    extra_html = f'<p>{" · ".join(extra)}</p>\n' if extra else ""
+        proj.append(("Предложить промт", CFG["suggest_url"], ext))
     return f"""<footer>
-<p><b>Промты для нейросетей:</b> {ai}</p>
-<p><b>Гайды:</b> {gd}</p>
-{extra_html}<p>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · <a href="/">{NAME}</a></p>
+<div class="fcols">{col("Разделы", cats)}{col("Нейросети", ai)}{col("Гайды", gd)}{col("Проект", proj)}</div>
+<p>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · © {NAME}</p>
 </footer>"""
 
 
@@ -130,14 +159,14 @@ def page(*, title, desc, path, body, ld=None, og_type="website"):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="/style.css?v=3">{lds}
+<link rel="stylesheet" href="/style.css?v=7">{lds}
 <script>window.SITE={site_js}</script>
-<script src="/app.js?v=5" defer></script>{m_head}
+<script src="/app.js?v=8" defer></script>{m_head}
 </head>
 <body>
 {m_body}<div class="wrap">
 <div class="top"><a class="logo" href="/"><img src="/favicon.svg?v=2" width="24" height="24" alt="">{NAME}</a>
-<nav><a href="/{GUIDES_DIR}/">Гайды</a><button class="theme" id="theme" type="button" aria-label="Сменить тему" title="Сменить тему"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg></button></nav></div>
+<nav><a href="/#razdely">Разделы</a><a href="/{GUIDES_DIR}/">Гайды</a><a href="/#izbrannoe" aria-label="Избранное" title="Избранное">★</a><button class="theme" id="theme" type="button" aria-label="Сменить тему" title="Сменить тему"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg></button></nav></div>
 {body}
 {FOOTER}
 </div>
@@ -174,9 +203,10 @@ def card(p, show_cat=True):
     link = f'<a class="link" href="{e(p["link"])}" target="_blank" rel="noopener">Документация →</a>' if p.get("link") else ""
     fill = f'<a class="link" href="{p["path"]}">Заполнить поля →</a>' if p["fields"] else ""
     desc = f'<p class="desc">{e(p["desc"])}</p>' if p.get("desc") else ""
+    more = '<button class="link expand" type="button" data-expand hidden>Показать полностью ↓</button>'  # app.js покажет, если текст не влез
     return f"""<article class="item" data-path="{p["path"]}">
 <div class="head"><h2><a href="{p["path"]}">{e(p["title"])}</a></h2>{tag}</div>
-{desc}<pre>{e(p["text"])}</pre>
+{desc}<pre class="clamp">{e(p["text"])}</pre>{more}
 <div class="row"><button class="btn" data-copy>Копировать</button>{fill}{link}{fav_btn(p)}</div>
 </article>"""
 
@@ -306,11 +336,35 @@ def main():
 </section>
 """ if new and start else ""
     options = "".join(f"<option>{e(c)}</option>" for c in ["Мои", *CATS])
-    body = f"""<header>
-<h1>{NAME}</h1>
-<p>Готовые промты для ChatGPT, Claude, Gemini, YandexGPT, GigaChat и других нейросетей, а также шпаргалки по их API. Найдите нужное, заполните поля, скопируйте и вставьте.</p>
+    count = {c: sum(1 for p in prompts if p["cat"] == c) for c in CATS}
+    missing = set(CATS) - {c for _, cs in SHELVES for c in cs}
+    if missing:
+        raise SystemExit(f"Разделы не разложены по полкам (SHELVES в build.py): {missing}")
+    shelves = "".join(
+        f'<section class="shelf"><h2>{e(t)}</h2><div class="cats">' + "".join(
+            f'<a class="cat" href="/{CATS[c][0]}/"><span class="ico">{CAT_CARD[c][0]}</span><span class="txt"><b>{e(c)}</b>'
+            f'<span>{e(CAT_CARD[c][1])}</span></span><span class="num">{count[c]}</span></a>' for c in cs) + "</div></section>"
+        for t, cs in SHELVES)
+    ai_chips = "".join(f'<a class="chip" href="/{a["slug"]}/">{e(a["name"])}</a>' for a in ai_pages)
+    guide_cards = "".join(f'<a class="gcard" href="/{GUIDES_DIR}/{g["slug"]}/"><b>{e(g["h1"])}</b><span>{e(cut(g["description"], 90))}</span></a>' for g in guides)
+    body = f"""<header class="hero">
+<h1>Готовые промты для нейросетей</h1>
+<p>{len(prompts)} шаблонов на русском для ChatGPT, Claude, GigaChat, Алисы и других. Выберите задачу, заполните поля — и откройте промт в чате одной кнопкой.</p>
 </header>
-""" + listing(prompts, prompts, add=ADD_FORM.format(options=options), picks=picks)
+<input id="q" class="search" type="search" placeholder="Найти промт: резюме, пост, SQL…" aria-label="Поиск">
+<div class="quick" id="quick"></div>
+<section class="results" id="results" hidden>
+<p class="count" id="count"></p>
+<main class="list" id="list" data-cat="">
+{"".join(card(p) for p in prompts)}
+</main>
+<p class="empty" id="empty" hidden></p>
+</section>
+<div class="home" id="home">
+<div class="shelves" id="razdely">{shelves}</div>
+{picks}<section class="block"><h2>Промты для конкретной нейросети</h2><div class="chips">{ai_chips}</div></section>
+<section class="block"><h2>Гайды</h2><div class="gcards">{guide_cards}</div></section>
+{ADD_FORM.format(options=options)}</div>"""
     write("index.html", page(
         title=f"{NAME} — готовые промты для ChatGPT, Claude и других нейросетей",
         desc=f"{len(prompts)} готовых промтов на русском для ChatGPT, Claude, Gemini, YandexGPT и GigaChat: тексты, работа, код, учёба, картинки, видео, а также шпаргалки по API нейросетей.",
