@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Как писать промты: 8 правил, которые работают в любой нейросети | Промтотека</title>
+<meta name="description" content="Простые правила, чтобы ChatGPT, Claude, GigaChat и другие нейросети отвечали точнее: роль, контекст, формат, примеры и ограничения. С примерами «до» и «после».">
+<link rel="canonical" href="https://promoteka.tech/gaydy/kak-pisat-promty/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Промтотека">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Как писать промты: 8 правил, которые работают в любой нейросети | Промтотека">
+<meta property="og:description" content="Простые правила, чтобы ChatGPT, Claude, GigaChat и другие нейросети отвечали точнее: роль, контекст, формат, примеры и ограничения. С примерами «до» и «после».">
+<meta property="og:url" content="https://promoteka.tech/gaydy/kak-pisat-promty/">
+<meta property="og:image" content="https://promoteka.tech/og.png?v=2">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="/style.css?v=3">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Промтотека", "item": "https://promoteka.tech/"}, {"@type": "ListItem", "position": 2, "name": "Гайды", "item": "https://promoteka.tech/gaydy/"}, {"@type": "ListItem", "position": 3, "name": "Как писать промты", "item": "https://promoteka.tech/gaydy/kak-pisat-promty/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как писать промты: 8 правил, которые работают в любой нейросети", "description": "Простые правила, чтобы ChatGPT, Claude, GigaChat и другие нейросети отвечали точнее: роль, контекст, формат, примеры и ограничения. С примерами «до» и «после».", "inLanguage": "ru", "mainEntityOfPage": "https://promoteka.tech/gaydy/kak-pisat-promty/", "publisher": {"@type": "Organization", "name": "Промтотека"}}</script>
+<script>window.SITE={"cats": {"Тексты": "/teksty/", "Работа": "/rabota/", "Маркетинг": "/marketing/", "Код": "/kod/", "Учёба": "/ucheba/", "Перевод": "/perevod/", "Жизнь": "/zhizn/", "Изображения": "/izobrazheniya/", "Видео": "/video/", "Музыка": "/muzyka/", "Системные": "/sistemnye/", "Приёмы": "/priemy/", "API": "/api/"}, "metrika": ""}</script>
+<script src="/app.js?v=3" defer></script>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><a class="logo" href="/"><img src="/favicon.svg?v=2" width="24" height="24" alt="">Промтотека</a>
+<nav><a href="/gaydy/">Гайды</a><button class="theme" id="theme" type="button" aria-label="Сменить тему" title="Сменить тему"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg></button></nav></div>
+<header>
+<ol class="crumbs" aria-label="Навигация"><li><a href="/">Промтотека</a></li><li><a href="/gaydy/">Гайды</a></li><li>Как писать промты</li></ol>
+<h1>Как писать промты</h1>
+</header>
+<article class="article">
+<p>Промт — это текст, который вы отправляете нейросети. От того, как он написан, зависит почти всё: одна и та же модель может выдать общий ответ «ни о чём» или готовый к работе текст. Хорошая новость: правила простые и одинаково работают в ChatGPT, Claude, Gemini, GigaChat, YandexGPT и DeepSeek.</p>
+
+<h2>1. Говорите, что нужно получить, а не о чём тема</h2>
+<p>«Напиши про отпуск» — это тема. «Напиши письмо руководителю с просьбой перенести отпуск на две недели» — это задача. Нейросеть не угадывает, что у вас в голове: чем конкретнее результат, тем точнее ответ.</p>
+
+<h2>2. Дайте контекст</h2>
+<p>Для кого текст, зачем он нужен, что уже известно, какие есть ограничения. Модель не знает вашу компанию, ваших клиентов и вашу ситуацию — расскажите их в двух-трёх предложениях.</p>
+<div class="compare">
+<p><b>До:</b> Напиши пост про наш кофе.</p>
+<p><b>После:</b> Напиши пост для Telegram-канала кофейни у метро. Читатели — студенты и офисные сотрудники, которые берут кофе с собой. Повод: с понедельника открываемся в 7:00 вместо 8:00. До 600 знаков, дружелюбный тон, без хештегов.</p>
+</div>
+
+<h2>3. Задайте роль</h2>
+<p>Фраза «Ты — опытный юрист», «Ты — редактор деловых текстов» или «Ты — терпеливый учитель математики» настраивает стиль, глубину и словарь ответа. Роль особенно полезна в системных промтах — инструкциях, которые действуют на весь разговор. Готовые варианты — в разделе <a href="/sistemnye/">«Системные»</a>.</p>
+
+<h2>4. Опишите формат ответа</h2>
+<p>Список, таблица, письмо, до 100 слов, три варианта на выбор, JSON для программы — скажите это прямо. Без указания формата нейросеть обычно пишет длинно и с вступлениями.</p>
+
+<h2>5. Покажите пример</h2>
+<p>Если нужен определённый стиль, проще показать 2–3 образца, чем описывать их словами. Модель отлично копирует структуру и тон примеров. Шаблон — <a href="/priemy/primery-v-promte/">«Примеры в промте»</a>.</p>
+
+<h2>6. Скажите, чего не нужно</h2>
+<p>«Без канцелярита», «не придумывай цифры», «не используй слово „уникальный“», «если не знаешь — так и скажи». Ограничения убирают самые частые проблемы ответов.</p>
+
+<h2>7. Отделяйте инструкцию от данных</h2>
+<p>Если вы вставляете длинный текст, письмо или код, обозначьте, где он начинается и заканчивается: например, тегами <code>&lt;текст&gt;</code> и <code>&lt;/текст&gt;</code>. Так модель не перепутает ваши указания с содержимым. Шаблон — <a href="/priemy/razdeliteli/">«Разделители»</a>.</p>
+
+<h2>8. Уточняйте, а не начинайте заново</h2>
+<p>Первый ответ — черновик. Напишите, что поправить: «короче», «убери второй абзац», «сделай тон теплее», «добавь пример из розничной торговли». Если задача сложная, попросите нейросеть сначала задать вам уточняющие вопросы — промт <a href="/priemy/poprosit-utochnit/">«Попросить уточнить»</a>.</p>
+
+<h2>Формула на каждый день</h2>
+<pre>Ты — [роль].
+Задача: [что сделать].
+Контекст: [для кого, зачем, что известно].
+Формат: [список / таблица / до 100 слов].
+Ограничения: [чего не делать].</pre>
+<p>Этой формулы хватает для большинства задач. А если не хочется писать с нуля — в Промтотеке больше 300 готовых шаблонов: выберите подходящий, заполните поля и отправьте.</p>
+</article>
+<section class="related"><h2>Другие гайды</h2><ul class="links"><li><a href="/gaydy/kakuyu-neyroset-vybrat/">Какую нейросеть выбрать<span>Чем отличаются популярные чат-нейросети, какие из них работают в России и для каких задач подходят. Краткое сравнение без рекламы.</span></a></li><li><a href="/gaydy/promty-dlya-kartinok/">Как писать промты для картинок<span>Из чего состоит хороший промт для генерации изображений: объект, стиль, свет, ракурс, настроение. Негативные промты, параметры и частые ошибки.</span></a></li><li><a href="/gaydy/kak-nachat-rabotat-s-api/">Как начать работать с API нейросетей<span>Что такое API нейросети, как получить ключ, сделать первый запрос через curl или Python, сколько это стоит и как не потерять ключ. Пошагово для новичков.</span></a></li></ul></section>
+<footer>
+<p><b>Промты для нейросетей:</b> <a href="/promty-dlya-chatgpt/">ChatGPT</a> · <a href="/promty-dlya-claude/">Claude</a> · <a href="/promty-dlya-gigachat/">GigaChat</a> · <a href="/promty-dlya-yandexgpt/">YandexGPT</a> · <a href="/promty-dlya-deepseek/">DeepSeek</a> · <a href="/promty-dlya-midjourney/">Midjourney</a> · <a href="/promty-dlya-stable-diffusion/">Stable Diffusion</a> · <a href="/promty-dlya-suno/">Suno</a></p>
+<p><b>Гайды:</b> <a href="/gaydy/kak-pisat-promty/">Как писать промты</a> · <a href="/gaydy/kakuyu-neyroset-vybrat/">Какую нейросеть выбрать</a> · <a href="/gaydy/promty-dlya-kartinok/">Как писать промты для картинок</a> · <a href="/gaydy/kak-nachat-rabotat-s-api/">Как начать работать с API нейросетей</a></p>
+<p>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · <a href="/">Промтотека</a></p>
+</footer>
+</div>
+</body>
+</html>

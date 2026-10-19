@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Как начать работать с API нейросетей: ключ, первый запрос и стоимость | Промтотека</title>
+<meta name="description" content="Что такое API нейросети, как получить ключ, сделать первый запрос через curl или Python, сколько это стоит и как не потерять ключ. Пошагово для новичков.">
+<link rel="canonical" href="https://promoteka.tech/gaydy/kak-nachat-rabotat-s-api/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Промтотека">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Как начать работать с API нейросетей: ключ, первый запрос и стоимость | Промтотека">
+<meta property="og:description" content="Что такое API нейросети, как получить ключ, сделать первый запрос через curl или Python, сколько это стоит и как не потерять ключ. Пошагово для новичков.">
+<meta property="og:url" content="https://promoteka.tech/gaydy/kak-nachat-rabotat-s-api/">
+<meta property="og:image" content="https://promoteka.tech/og.png?v=2">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="/style.css?v=3">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Промтотека", "item": "https://promoteka.tech/"}, {"@type": "ListItem", "position": 2, "name": "Гайды", "item": "https://promoteka.tech/gaydy/"}, {"@type": "ListItem", "position": 3, "name": "Как начать работать с API нейросетей", "item": "https://promoteka.tech/gaydy/kak-nachat-rabotat-s-api/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Как начать работать с API нейросетей: ключ, первый запрос и стоимость", "description": "Что такое API нейросети, как получить ключ, сделать первый запрос через curl или Python, сколько это стоит и как не потерять ключ. Пошагово для новичков.", "inLanguage": "ru", "mainEntityOfPage": "https://promoteka.tech/gaydy/kak-nachat-rabotat-s-api/", "publisher": {"@type": "Organization", "name": "Промтотека"}}</script>
+<script>window.SITE={"cats": {"Тексты": "/teksty/", "Работа": "/rabota/", "Маркетинг": "/marketing/", "Код": "/kod/", "Учёба": "/ucheba/", "Перевод": "/perevod/", "Жизнь": "/zhizn/", "Изображения": "/izobrazheniya/", "Видео": "/video/", "Музыка": "/muzyka/", "Системные": "/sistemnye/", "Приёмы": "/priemy/", "API": "/api/"}, "metrika": ""}</script>
+<script src="/app.js?v=3" defer></script>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><a class="logo" href="/"><img src="/favicon.svg?v=2" width="24" height="24" alt="">Промтотека</a>
+<nav><a href="/gaydy/">Гайды</a><button class="theme" id="theme" type="button" aria-label="Сменить тему" title="Сменить тему"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg></button></nav></div>
+<header>
+<ol class="crumbs" aria-label="Навигация"><li><a href="/">Промтотека</a></li><li><a href="/gaydy/">Гайды</a></li><li>Как начать работать с API нейросетей</li></ol>
+<h1>Как начать работать с API нейросетей</h1>
+</header>
+<article class="article">
+<p>API — это способ обращаться к нейросети не через чат в браузере, а из своей программы: скрипта, сайта, Telegram-бота или таблицы. Вы отправляете запрос с текстом, а получаете ответ модели в формате JSON. Так работают почти все сервисы «на базе ChatGPT».</p>
+
+<h2>Шаг 1. Выберите провайдера</h2>
+<p>У каждой крупной нейросети есть свой API: OpenAI, Anthropic (Claude), Google (Gemini), Mistral, DeepSeek, GigaChat, YandexGPT. Если нужна оплата в рублях и работа без ограничений в России, посмотрите на GigaChat и YandexGPT. Если хотите бесплатно и без интернета — запустите модель на своём компьютере через Ollama.</p>
+
+<h2>Шаг 2. Получите ключ</h2>
+<p>Зарегистрируйтесь в кабинете разработчика провайдера, пополните баланс (у некоторых есть бесплатный стартовый лимит) и создайте API-ключ. Ключ — это пароль: по нему провайдер понимает, с чьего счёта списывать деньги.</p>
+<ul>
+<li>Не публикуйте ключ в коде, на GitHub и в скриншотах.</li>
+<li>Храните его в переменной окружения или файле <code>.env</code>, который добавлен в <code>.gitignore</code> — см. <a href="/api/klyuch-v-fayle-env/">«Ключ в файле .env»</a>.</li>
+<li>Не вставляйте ключ в код сайта, который выполняется в браузере: его увидит любой посетитель. Запросы к API делайте с сервера.</li>
+<li>Поставьте лимит расходов в кабинете провайдера.</li>
+</ul>
+
+<h2>Шаг 3. Сделайте первый запрос</h2>
+<p>Проще всего начать с команды curl в терминале. Вот запрос к OpenAI-совместимому API — такой формат понимают OpenAI, DeepSeek, Mistral, Groq, OpenRouter и многие другие:</p>
+<pre>curl https://api.openai.com/v1/chat/completions \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "[название модели]",
+    "messages": [{"role": "user", "content": "Привет!"}]
+  }'</pre>
+<p>Название модели возьмите из документации провайдера — они часто обновляются. Готовые запросы для разных сервисов, на curl, Python и JavaScript — в разделе <a href="/api/">«API»</a>.</p>
+
+<h2>Шаг 4. Разберитесь со стоимостью</h2>
+<p>Платить нужно за <b>токены</b> — кусочки текста. Один токен — это примерно 3–4 символа русского текста. Считаются и токены запроса (ваш текст, история переписки, системный промт), и токены ответа. Цена указывается за миллион токенов и сильно зависит от модели: маленькие модели в десятки раз дешевле флагманских.</p>
+<p>Чтобы тратить меньше:</p>
+<ul>
+<li>берите маленькую модель для простых задач — классификации, извлечения данных, коротких ответов;</li>
+<li>ограничивайте длину ответа параметром <code>max_tokens</code>;</li>
+<li>не отправляйте всю историю переписки, если она не нужна.</li>
+</ul>
+
+<h2>Шаг 5. Настройте ответ</h2>
+<p>Основные параметры запроса: <code>temperature</code> (насколько ответ творческий), <code>max_tokens</code> (предел длины), системный промт (роль и правила для модели). Подробнее — в шпаргалке <a href="/api/osnovnye-parametry/">«Основные параметры»</a>. Если нужен ответ, который разберёт программа, попросите модель отвечать в JSON — промт <a href="/sistemnye/otvet-v-json/">«Ответ в JSON»</a>.</p>
+
+<h2>Что дальше</h2>
+<p>Когда первый запрос заработал, можно добавить потоковый вывод, чтобы ответ появлялся по мере генерации, научить модель вызывать ваши функции (tool use) или передавать ей картинки. Примеры всех этих случаев — в <a href="/api/">разделе API</a>.</p>
+</article>
+<section class="related"><h2>Другие гайды</h2><ul class="links"><li><a href="/gaydy/kak-pisat-promty/">Как писать промты<span>Простые правила, чтобы ChatGPT, Claude, GigaChat и другие нейросети отвечали точнее: роль, контекст, формат, примеры и ограничения. С примерами «до» и «после».</span></a></li><li><a href="/gaydy/kakuyu-neyroset-vybrat/">Какую нейросеть выбрать<span>Чем отличаются популярные чат-нейросети, какие из них работают в России и для каких задач подходят. Краткое сравнение без рекламы.</span></a></li><li><a href="/gaydy/promty-dlya-kartinok/">Как писать промты для картинок<span>Из чего состоит хороший промт для генерации изображений: объект, стиль, свет, ракурс, настроение. Негативные промты, параметры и частые ошибки.</span></a></li></ul></section>
+<footer>
+<p><b>Промты для нейросетей:</b> <a href="/promty-dlya-chatgpt/">ChatGPT</a> · <a href="/promty-dlya-claude/">Claude</a> · <a href="/promty-dlya-gigachat/">GigaChat</a> · <a href="/promty-dlya-yandexgpt/">YandexGPT</a> · <a href="/promty-dlya-deepseek/">DeepSeek</a> · <a href="/promty-dlya-midjourney/">Midjourney</a> · <a href="/promty-dlya-stable-diffusion/">Stable Diffusion</a> · <a href="/promty-dlya-suno/">Suno</a></p>
+<p><b>Гайды:</b> <a href="/gaydy/kak-pisat-promty/">Как писать промты</a> · <a href="/gaydy/kakuyu-neyroset-vybrat/">Какую нейросеть выбрать</a> · <a href="/gaydy/promty-dlya-kartinok/">Как писать промты для картинок</a> · <a href="/gaydy/kak-nachat-rabotat-s-api/">Как начать работать с API нейросетей</a></p>
+<p>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · <a href="/">Промтотека</a></p>
+</footer>
+</div>
+</body>
+</html>

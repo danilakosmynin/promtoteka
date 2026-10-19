@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Шпаргалки по API нейросетей — 28 готовых шаблонов | Промтотека</title>
 <meta name="description" content="Готовые запросы к API OpenAI, Claude, Gemini, Mistral, DeepSeek, YandexGPT, GigaChat, Ollama и других: curl, Python, JavaScript. Скопируйте и вставьте в…">
 <link rel="canonical" href="https://promoteka.tech/api/">
@@ -20,13 +21,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/style.css?v=3">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Промтотека", "item": "https://promoteka.tech/"}, {"@type": "ListItem", "position": 2, "name": "API", "item": "https://promoteka.tech/api/"}]}</script>
-<script>window.CATS={"Тексты": "/teksty/", "Работа": "/rabota/", "Маркетинг": "/marketing/", "Код": "/kod/", "Учёба": "/ucheba/", "Перевод": "/perevod/", "Жизнь": "/zhizn/", "Изображения": "/izobrazheniya/", "Видео": "/video/", "Музыка": "/muzyka/", "Системные": "/sistemnye/", "Приёмы": "/priemy/", "API": "/api/"}</script>
-<script src="/app.js" defer></script>
+<script>window.SITE={"cats": {"Тексты": "/teksty/", "Работа": "/rabota/", "Маркетинг": "/marketing/", "Код": "/kod/", "Учёба": "/ucheba/", "Перевод": "/perevod/", "Жизнь": "/zhizn/", "Изображения": "/izobrazheniya/", "Видео": "/video/", "Музыка": "/muzyka/", "Системные": "/sistemnye/", "Приёмы": "/priemy/", "API": "/api/"}, "metrika": ""}</script>
+<script src="/app.js?v=3" defer></script>
 </head>
 <body>
 <div class="wrap">
+<div class="top"><a class="logo" href="/"><img src="/favicon.svg?v=2" width="24" height="24" alt="">Промтотека</a>
+<nav><a href="/gaydy/">Гайды</a><button class="theme" id="theme" type="button" aria-label="Сменить тему" title="Сменить тему"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg></button></nav></div>
 <header>
 <ol class="crumbs" aria-label="Навигация"><li><a href="/">Промтотека</a></li><li>API</li></ol>
 <h1>Шпаргалки по API нейросетей</h1>
@@ -36,7 +39,7 @@
 <nav class="tabs" id="tabs" aria-label="Разделы"><a class="tab" href="/">Все · 308</a><a class="tab" href="/teksty/">Тексты · 31</a><a class="tab" href="/rabota/">Работа · 36</a><a class="tab" href="/marketing/">Маркетинг · 30</a><a class="tab" href="/kod/">Код · 34</a><a class="tab" href="/ucheba/">Учёба · 26</a><a class="tab" href="/perevod/">Перевод · 11</a><a class="tab" href="/zhizn/">Жизнь · 29</a><a class="tab" href="/izobrazheniya/">Изображения · 24</a><a class="tab" href="/video/">Видео · 14</a><a class="tab" href="/muzyka/">Музыка · 11</a><a class="tab" href="/sistemnye/">Системные · 15</a><a class="tab" href="/priemy/">Приёмы · 19</a><a class="tab" href="/api/" aria-current="page">API · 28</a></nav>
 <p class="count" id="count">Найдено: 28</p>
 <main class="list" id="list" data-cat="API">
-<article class="item">
+<article class="item" data-path="/api/openai-zapros-k-chatu/">
 <div class="head"><h2><a href="/api/openai-zapros-k-chatu/">OpenAI — запрос к чату</a></h2></div>
 <p class="desc">Ключ — в переменной окружения OPENAI_API_KEY.</p><pre>curl https://api.openai.com/v1/chat/completions \
   -H &quot;Authorization: Bearer $OPENAI_API_KEY&quot; \
@@ -48,8 +51,8 @@
       {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}
     ]
   }&#x27;</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://platform.openai.com/docs" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/openai-zapros-k-chatu/">Заполнить поля →</a><a class="link" href="https://platform.openai.com/docs" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/openai-zapros-k-chatu/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/openai-python/">
 <div class="head"><h2><a href="/api/openai-python/">OpenAI — Python</a></h2></div>
 <p class="desc">Официальная библиотека: pip install openai</p><pre>from openai import OpenAI
 
@@ -60,8 +63,8 @@ resp = client.chat.completions.create(
     messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}],
 )
 print(resp.choices[0].message.content)</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://platform.openai.com/docs" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/openai-python/">Заполнить поля →</a><a class="link" href="https://platform.openai.com/docs" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/openai-python/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/openai-kartinka/">
 <div class="head"><h2><a href="/api/openai-kartinka/">OpenAI — картинка</a></h2></div>
 <p class="desc">Генерация изображения по тексту.</p><pre>curl https://api.openai.com/v1/images/generations \
   -H &quot;Authorization: Bearer $OPENAI_API_KEY&quot; \
@@ -71,8 +74,8 @@ print(resp.choices[0].message.content)</pre>
     &quot;prompt&quot;: &quot;кот в космосе, акварель&quot;,
     &quot;size&quot;: &quot;1024x1024&quot;
   }&#x27;</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://platform.openai.com/docs" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/openai-kartinka/">Заполнить поля →</a><a class="link" href="https://platform.openai.com/docs" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/openai-kartinka/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/anthropic-claude-soobshchenie/">
 <div class="head"><h2><a href="/api/anthropic-claude-soobshchenie/">Anthropic (Claude) — сообщение</a></h2></div>
 <p class="desc">Ключ — в ANTHROPIC_API_KEY. Заголовок версии обязателен.</p><pre>curl https://api.anthropic.com/v1/messages \
   -H &quot;x-api-key: $ANTHROPIC_API_KEY&quot; \
@@ -84,8 +87,8 @@ print(resp.choices[0].message.content)</pre>
     &quot;system&quot;: &quot;Ты полезный помощник.&quot;,
     &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}]
   }&#x27;</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://docs.claude.com" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/anthropic-claude-soobshchenie/">Заполнить поля →</a><a class="link" href="https://docs.claude.com" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/anthropic-claude-soobshchenie/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/anthropic-claude-python/">
 <div class="head"><h2><a href="/api/anthropic-claude-python/">Anthropic (Claude) — Python</a></h2></div>
 <p class="desc">Официальная библиотека: pip install anthropic</p><pre>import anthropic
 
@@ -97,8 +100,8 @@ msg = client.messages.create(
     messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}],
 )
 print(msg.content[0].text)</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://docs.claude.com" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/anthropic-claude-python/">Заполнить поля →</a><a class="link" href="https://docs.claude.com" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/anthropic-claude-python/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/google-gemini-generatsiya/">
 <div class="head"><h2><a href="/api/google-gemini-generatsiya/">Google Gemini — генерация</a></h2></div>
 <p class="desc">Ключ — в GEMINI_API_KEY, получить в Google AI Studio.</p><pre>curl &quot;https://generativelanguage.googleapis.com/v1beta/models/[название модели]:generateContent&quot; \
   -H &quot;x-goog-api-key: $GEMINI_API_KEY&quot; \
@@ -106,8 +109,8 @@ print(msg.content[0].text)</pre>
   -d &#x27;{
     &quot;contents&quot;: [{&quot;parts&quot;: [{&quot;text&quot;: &quot;Привет!&quot;}]}]
   }&#x27;</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://ai.google.dev" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/google-gemini-generatsiya/">Заполнить поля →</a><a class="link" href="https://ai.google.dev" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/google-gemini-generatsiya/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/mistral/">
 <div class="head"><h2><a href="/api/mistral/">Mistral</a></h2></div>
 <p class="desc">Формат как у OpenAI.</p><pre>curl https://api.mistral.ai/v1/chat/completions \
   -H &quot;Authorization: Bearer $MISTRAL_API_KEY&quot; \
@@ -116,8 +119,8 @@ print(msg.content[0].text)</pre>
     &quot;model&quot;: &quot;[название модели]&quot;,
     &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}]
   }&#x27;</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://docs.mistral.ai" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/mistral/">Заполнить поля →</a><a class="link" href="https://docs.mistral.ai" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/mistral/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/deepseek/">
 <div class="head"><h2><a href="/api/deepseek/">DeepSeek</a></h2></div>
 <p class="desc">Формат как у OpenAI.</p><pre>curl https://api.deepseek.com/chat/completions \
   -H &quot;Authorization: Bearer $DEEPSEEK_API_KEY&quot; \
@@ -126,8 +129,8 @@ print(msg.content[0].text)</pre>
     &quot;model&quot;: &quot;[название модели]&quot;,
     &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}]
   }&#x27;</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://api-docs.deepseek.com" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/deepseek/">Заполнить поля →</a><a class="link" href="https://api-docs.deepseek.com" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/deepseek/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/openrouter-mnogo-modeley-cherez-odin-klyuch/">
 <div class="head"><h2><a href="/api/openrouter-mnogo-modeley-cherez-odin-klyuch/">OpenRouter — много моделей через один ключ</a></h2></div>
 <p class="desc">Формат как у OpenAI, модель указывается как «провайдер/модель».</p><pre>curl https://openrouter.ai/api/v1/chat/completions \
   -H &quot;Authorization: Bearer $OPENROUTER_API_KEY&quot; \
@@ -136,8 +139,8 @@ print(msg.content[0].text)</pre>
     &quot;model&quot;: &quot;[провайдер/модель]&quot;,
     &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}]
   }&#x27;</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://openrouter.ai/docs" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/openrouter-mnogo-modeley-cherez-odin-klyuch/">Заполнить поля →</a><a class="link" href="https://openrouter.ai/docs" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/openrouter-mnogo-modeley-cherez-odin-klyuch/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/groq/">
 <div class="head"><h2><a href="/api/groq/">Groq</a></h2></div>
 <p class="desc">Очень быстрые ответы открытых моделей. Формат как у OpenAI.</p><pre>curl https://api.groq.com/openai/v1/chat/completions \
   -H &quot;Authorization: Bearer $GROQ_API_KEY&quot; \
@@ -146,8 +149,8 @@ print(msg.content[0].text)</pre>
     &quot;model&quot;: &quot;[название модели]&quot;,
     &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}]
   }&#x27;</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://console.groq.com/docs" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/groq/">Заполнить поля →</a><a class="link" href="https://console.groq.com/docs" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/groq/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/yandexgpt/">
 <div class="head"><h2><a href="/api/yandexgpt/">YandexGPT</a></h2></div>
 <p class="desc">Нужны API-ключ и идентификатор каталога в Yandex Cloud.</p><pre>curl https://llm.api.cloud.yandex.net/foundationModels/v1/completion \
   -H &quot;Authorization: Api-Key $YANDEX_API_KEY&quot; \
@@ -157,8 +160,8 @@ print(msg.content[0].text)</pre>
     &quot;completionOptions&quot;: {&quot;temperature&quot;: 0.6, &quot;maxTokens&quot;: &quot;2000&quot;},
     &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;text&quot;: &quot;Привет!&quot;}]
   }&#x27;</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://yandex.cloud/ru/docs/foundation-models/" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/yandexgpt/">Заполнить поля →</a><a class="link" href="https://yandex.cloud/ru/docs/foundation-models/" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/yandexgpt/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/gigachat/">
 <div class="head"><h2><a href="/api/gigachat/">GigaChat</a></h2></div>
 <p class="desc">Сначала получаем токен (живёт 30 минут), затем делаем запрос.</p><pre># 1. Токен доступа
 curl https://ngw.devices.sberbank.ru:9443/api/v2/oauth \
@@ -172,16 +175,16 @@ curl https://gigachat.devices.sberbank.ru/api/v1/chat/completions \
   -H &quot;Authorization: Bearer [access_token]&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;model&quot;: &quot;GigaChat&quot;, &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}]}&#x27;</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://developers.sber.ru/docs/ru/gigachat/overview" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/gigachat/">Заполнить поля →</a><a class="link" href="https://developers.sber.ru/docs/ru/gigachat/overview" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/gigachat/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/ollama-lokalnaya-model/">
 <div class="head"><h2><a href="/api/ollama-lokalnaya-model/">Ollama — локальная модель</a></h2></div>
 <p class="desc">Бесплатно, на своём компьютере. Сначала: ollama pull [модель]</p><pre>curl http://localhost:11434/api/chat -d &#x27;{
   &quot;model&quot;: &quot;[модель]&quot;,
   &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Привет!&quot;}],
   &quot;stream&quot;: false
 }&#x27;</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://ollama.com" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/ollama-lokalnaya-model/">Заполнить поля →</a><a class="link" href="https://ollama.com" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/ollama-lokalnaya-model/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/javascript-fetch/">
 <div class="head"><h2><a href="/api/javascript-fetch/">JavaScript — fetch</a></h2></div>
 <p class="desc">Запрос из Node.js или браузера (ключ не храните во фронтенде).</p><pre>const resp = await fetch(&quot;[адрес API]&quot;, {
   method: &quot;POST&quot;,
@@ -196,8 +199,8 @@ curl https://gigachat.devices.sberbank.ru/api/v1/chat/completions \
 });
 const data = await resp.json();
 console.log(data);</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/javascript-fetch/">Заполнить поля →</a><button class="star" type="button" data-fav="/api/javascript-fetch/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/python-obshchiy-shablon/">
 <div class="head"><h2><a href="/api/python-obshchiy-shablon/">Python — общий шаблон</a></h2></div>
 <p class="desc">Минимальный запрос через библиотеку requests.</p><pre>import os, requests
 
@@ -209,8 +212,8 @@ resp = requests.post(
 )
 resp.raise_for_status()
 print(resp.json())</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/python-obshchiy-shablon/">Заполнить поля →</a><button class="star" type="button" data-fav="/api/python-obshchiy-shablon/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/potokovyy-otvet/">
 <div class="head"><h2><a href="/api/potokovyy-otvet/">Потоковый ответ</a></h2></div>
 <p class="desc">Текст приходит по частям, как в чате.</p><pre>Добавьте в тело запроса:
 &quot;stream&quot;: true
@@ -218,16 +221,16 @@ print(resp.json())</pre>
 Ответ придёт как поток событий (Server-Sent Events): строки вида
 data: {...кусок ответа...}
 Последнее событие у OpenAI-совместимых API — data: [DONE]</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><button class="star" type="button" data-fav="/api/potokovyy-otvet/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/osnovnye-parametry/">
 <div class="head"><h2><a href="/api/osnovnye-parametry/">Основные параметры</a></h2></div>
 <p class="desc">Что значат настройки запроса.</p><pre>temperature   0–2   творчество: 0 — точно и одинаково, 1+ — разнообразно
 max_tokens          предел длины ответа (1 токен ≈ 3–4 символа текста)
 top_p         0–1   альтернатива temperature, меняйте что-то одно
 stop                строки, на которых ответ обрывается
 system              инструкция-роль для всей переписки</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><button class="star" type="button" data-fav="/api/osnovnye-parametry/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/klyuch-v-fayle-env/">
 <div class="head"><h2><a href="/api/klyuch-v-fayle-env/">Ключ в файле .env</a></h2></div>
 <p class="desc">Чтобы ключ не попал в код и в Git.</p><pre># файл .env (добавьте его в .gitignore)
 OPENAI_API_KEY=sk-...
@@ -236,8 +239,8 @@ ANTHROPIC_API_KEY=sk-ant-...
 # Python: pip install python-dotenv
 from dotenv import load_dotenv
 load_dotenv()</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><button class="star" type="button" data-fav="/api/klyuch-v-fayle-env/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/openai-responses-api/">
 <div class="head"><h2><a href="/api/openai-responses-api/">OpenAI — Responses API</a></h2></div>
 <p class="desc">Новый основной способ запросов к моделям OpenAI.</p><pre>curl https://api.openai.com/v1/responses \
   -H &quot;Authorization: Bearer $OPENAI_API_KEY&quot; \
@@ -249,8 +252,8 @@ load_dotenv()</pre>
   }&#x27;
 
 # В Python: client.responses.create(model=..., input=...).output_text</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://platform.openai.com/docs" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/openai-responses-api/">Заполнить поля →</a><a class="link" href="https://platform.openai.com/docs" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/openai-responses-api/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/openai-embeddingi/">
 <div class="head"><h2><a href="/api/openai-embeddingi/">OpenAI — эмбеддинги</a></h2></div>
 <p class="desc">Векторы текста для поиска и рекомендаций.</p><pre>curl https://api.openai.com/v1/embeddings \
   -H &quot;Authorization: Bearer $OPENAI_API_KEY&quot; \
@@ -262,8 +265,8 @@ load_dotenv()</pre>
 
 # Ответ: data[0].embedding — список чисел.
 # Похожие тексты сравнивают по косинусному сходству векторов.</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://platform.openai.com/docs" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/openai-embeddingi/">Заполнить поля →</a><a class="link" href="https://platform.openai.com/docs" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/openai-embeddingi/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/openai-raspoznat-rech/">
 <div class="head"><h2><a href="/api/openai-raspoznat-rech/">OpenAI — распознать речь</a></h2></div>
 <p class="desc">Аудио в текст.</p><pre>curl https://api.openai.com/v1/audio/transcriptions \
   -H &quot;Authorization: Bearer $OPENAI_API_KEY&quot; \
@@ -272,8 +275,8 @@ load_dotenv()</pre>
   -F language=&quot;ru&quot;
 
 # Ответ: {&quot;text&quot;: &quot;...&quot;}</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://platform.openai.com/docs" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/openai-raspoznat-rech/">Заполнить поля →</a><a class="link" href="https://platform.openai.com/docs" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/openai-raspoznat-rech/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/openai-ozvuchit-tekst/">
 <div class="head"><h2><a href="/api/openai-ozvuchit-tekst/">OpenAI — озвучить текст</a></h2></div>
 <p class="desc">Текст в аудиофайл.</p><pre>curl https://api.openai.com/v1/audio/speech \
   -H &quot;Authorization: Bearer $OPENAI_API_KEY&quot; \
@@ -284,8 +287,8 @@ load_dotenv()</pre>
     &quot;voice&quot;: &quot;alloy&quot;
   }&#x27; \
   --output speech.mp3</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://platform.openai.com/docs" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/openai-ozvuchit-tekst/">Заполнить поля →</a><a class="link" href="https://platform.openai.com/docs" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/openai-ozvuchit-tekst/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/anthropic-claude-potokovyy-otvet/">
 <div class="head"><h2><a href="/api/anthropic-claude-potokovyy-otvet/">Anthropic (Claude) — потоковый ответ</a></h2></div>
 <p class="desc">Текст печатается по мере генерации. pip install anthropic</p><pre>import anthropic
 
@@ -298,8 +301,8 @@ with client.messages.stream(
 ) as stream:
     for text in stream.text_stream:
         print(text, end=&quot;&quot;, flush=True)</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://docs.claude.com" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/anthropic-claude-potokovyy-otvet/">Заполнить поля →</a><a class="link" href="https://docs.claude.com" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/anthropic-claude-potokovyy-otvet/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/anthropic-claude-instrumenty/">
 <div class="head"><h2><a href="/api/anthropic-claude-instrumenty/">Anthropic (Claude) — инструменты</a></h2></div>
 <p class="desc">Модель сама решает вызвать вашу функцию.</p><pre>curl https://api.anthropic.com/v1/messages \
   -H &quot;x-api-key: $ANTHROPIC_API_KEY&quot; \
@@ -322,8 +325,8 @@ with client.messages.stream(
 
 # Если в ответе stop_reason = &quot;tool_use&quot; — выполните функцию
 # и отправьте результат следующим сообщением как блок tool_result.</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://docs.claude.com" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/anthropic-claude-instrumenty/">Заполнить поля →</a><a class="link" href="https://docs.claude.com" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/anthropic-claude-instrumenty/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/anthropic-claude-kartinka-na-vkhod/">
 <div class="head"><h2><a href="/api/anthropic-claude-kartinka-na-vkhod/">Anthropic (Claude) — картинка на вход</a></h2></div>
 <p class="desc">Спросить модель о содержимом изображения.</p><pre>import base64
 import anthropic
@@ -342,8 +345,8 @@ msg = client.messages.create(
     ]}],
 )
 print(msg.content[0].text)</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://docs.claude.com" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/anthropic-claude-kartinka-na-vkhod/">Заполнить поля →</a><a class="link" href="https://docs.claude.com" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/anthropic-claude-kartinka-na-vkhod/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/google-gemini-python/">
 <div class="head"><h2><a href="/api/google-gemini-python/">Google Gemini — Python</a></h2></div>
 <p class="desc">Официальная библиотека: pip install google-genai</p><pre>from google import genai
 
@@ -354,8 +357,8 @@ resp = client.models.generate_content(
     contents=&quot;Привет!&quot;,
 )
 print(resp.text)</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://ai.google.dev" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/google-gemini-python/">Заполнить поля →</a><a class="link" href="https://ai.google.dev" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/google-gemini-python/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/ollama-python/">
 <div class="head"><h2><a href="/api/ollama-python/">Ollama — Python</a></h2></div>
 <p class="desc">Локальная модель из кода: pip install ollama</p><pre>import ollama
 
@@ -366,8 +369,8 @@ resp = ollama.chat(
 print(resp[&quot;message&quot;][&quot;content&quot;])
 
 # Сначала скачайте модель: ollama pull [модель]</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="https://ollama.com" target="_blank" rel="noopener">Документация →</a></div>
-</article><article class="item">
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/ollama-python/">Заполнить поля →</a><a class="link" href="https://ollama.com" target="_blank" rel="noopener">Документация →</a><button class="star" type="button" data-fav="/api/ollama-python/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+</article><article class="item" data-path="/api/openai-sovmestimye-api-iz-python/">
 <div class="head"><h2><a href="/api/openai-sovmestimye-api-iz-python/">OpenAI-совместимые API из Python</a></h2></div>
 <p class="desc">Одна библиотека openai для DeepSeek, OpenRouter, Groq, Ollama и других.</p><pre>import os
 from openai import OpenAI
@@ -387,11 +390,15 @@ print(resp.choices[0].message.content)
 # OpenRouter  https://openrouter.ai/api/v1
 # Groq        https://api.groq.com/openai/v1
 # Ollama      http://localhost:11434/v1  (api_key — любая строка)</pre>
-<div class="row"><button class="btn" data-copy>Копировать</button></div>
+<div class="row"><button class="btn" data-copy>Копировать</button><a class="link" href="/api/openai-sovmestimye-api-iz-python/">Заполнить поля →</a><button class="star" type="button" data-fav="/api/openai-sovmestimye-api-iz-python/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
 </article>
 </main>
 <p class="empty" id="empty" hidden></p>
-<footer>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · <a href="/">Промтотека</a></footer>
+<footer>
+<p><b>Промты для нейросетей:</b> <a href="/promty-dlya-chatgpt/">ChatGPT</a> · <a href="/promty-dlya-claude/">Claude</a> · <a href="/promty-dlya-gigachat/">GigaChat</a> · <a href="/promty-dlya-yandexgpt/">YandexGPT</a> · <a href="/promty-dlya-deepseek/">DeepSeek</a> · <a href="/promty-dlya-midjourney/">Midjourney</a> · <a href="/promty-dlya-stable-diffusion/">Stable Diffusion</a> · <a href="/promty-dlya-suno/">Suno</a></p>
+<p><b>Гайды:</b> <a href="/gaydy/kak-pisat-promty/">Как писать промты</a> · <a href="/gaydy/kakuyu-neyroset-vybrat/">Какую нейросеть выбрать</a> · <a href="/gaydy/promty-dlya-kartinok/">Как писать промты для картинок</a> · <a href="/gaydy/kak-nachat-rabotat-s-api/">Как начать работать с API нейросетей</a></p>
+<p>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · <a href="/">Промтотека</a></p>
+</footer>
 </div>
 </body>
 </html>

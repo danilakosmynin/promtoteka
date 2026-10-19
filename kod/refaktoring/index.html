@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Рефакторинг — промт для программиста | Промтотека</title>
 <meta name="description" content="Чище, без изменения поведения. Сделай рефакторинг кода: понятные имена, маленькие функции, без дублирования. Поведение не меняй. Покажи итоговый код и…">
 <link rel="canonical" href="https://promoteka.tech/kod/refaktoring/">
@@ -20,32 +21,42 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/style.css?v=3">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Промтотека", "item": "https://promoteka.tech/"}, {"@type": "ListItem", "position": 2, "name": "Код", "item": "https://promoteka.tech/kod/"}, {"@type": "ListItem", "position": 3, "name": "Рефакторинг", "item": "https://promoteka.tech/kod/refaktoring/"}]}</script>
-<script>window.CATS={"Тексты": "/teksty/", "Работа": "/rabota/", "Маркетинг": "/marketing/", "Код": "/kod/", "Учёба": "/ucheba/", "Перевод": "/perevod/", "Жизнь": "/zhizn/", "Изображения": "/izobrazheniya/", "Видео": "/video/", "Музыка": "/muzyka/", "Системные": "/sistemnye/", "Приёмы": "/priemy/", "API": "/api/"}</script>
-<script src="/app.js" defer></script>
+<script>window.SITE={"cats": {"Тексты": "/teksty/", "Работа": "/rabota/", "Маркетинг": "/marketing/", "Код": "/kod/", "Учёба": "/ucheba/", "Перевод": "/perevod/", "Жизнь": "/zhizn/", "Изображения": "/izobrazheniya/", "Видео": "/video/", "Музыка": "/muzyka/", "Системные": "/sistemnye/", "Приёмы": "/priemy/", "API": "/api/"}, "metrika": ""}</script>
+<script src="/app.js?v=3" defer></script>
 </head>
 <body>
 <div class="wrap">
+<div class="top"><a class="logo" href="/"><img src="/favicon.svg?v=2" width="24" height="24" alt="">Промтотека</a>
+<nav><a href="/gaydy/">Гайды</a><button class="theme" id="theme" type="button" aria-label="Сменить тему" title="Сменить тему"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg></button></nav></div>
 <header>
 <ol class="crumbs" aria-label="Навигация"><li><a href="/">Промтотека</a></li><li><a href="/kod/">Код</a></li><li>Рефакторинг</li></ol>
 <h1>Рефакторинг</h1>
 </header>
-<main class="prompt" style="display:flex;flex-direction:column;gap:14px">
+<main class="prompt" data-path="/kod/refaktoring/">
 <p class="desc">Чище, без изменения поведения.</p>
-<pre>Сделай рефакторинг кода: понятные имена, маленькие функции, без дублирования. Поведение не меняй. Покажи итоговый код и список изменений.
+<details class="fill" open><summary>Заполнить поля · 1</summary><div class="fill-grid"><div class="field wide"><label for="v0">код</label><textarea id="v0" data-field="код" rows="3"></textarea></div></div><button class="del" type="button" data-reset>Очистить поля</button></details>
+<pre data-src="Сделай рефакторинг кода: понятные имена, маленькие функции, без дублирования. Поведение не меняй. Покажи итоговый код и список изменений.
+
+Код:
+[код]">Сделай рефакторинг кода: понятные имена, маленькие функции, без дублирования. Поведение не меняй. Покажи итоговый код и список изменений.
 
 Код:
 [код]</pre>
-<div class="row"><button class="btn primary" data-copy>Копировать</button></div>
-<p class="hint">Скопируйте текст, замените слова в [квадратных скобках] на свои и отправьте нейросети.</p>
+<div class="row"><button class="btn primary" type="button" data-copy>Копировать</button><button class="btn" type="button" data-open="chatgpt">Открыть в ChatGPT</button><button class="btn" type="button" data-open="claude">Открыть в Claude</button><details class="share"><summary class="btn">Поделиться</summary><div><a href="https://t.me/share/url?url=https%3A//promoteka.tech/kod/refaktoring/&amp;text=%D0%A0%D0%B5%D1%84%D0%B0%D0%BA%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3" target="_blank" rel="noopener">Telegram</a><a href="https://vk.com/share.php?url=https%3A//promoteka.tech/kod/refaktoring/" target="_blank" rel="noopener">ВКонтакте</a><button type="button" data-copylink="https://promoteka.tech/kod/refaktoring/">Скопировать ссылку</button></div></details><button class="star" type="button" data-fav="/kod/refaktoring/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+<p class="hint">Заполните поля — текст обновится сразу. Затем скопируйте его или откройте в нейросети.</p>
 </main>
 <section class="related">
 <h2>Ещё в разделе «Код»</h2>
-<ul><li><a href="/kod/perevesti-na-drugoy-yazyk/">Перевести на другой язык<span>Код с одного языка на другой.</span></a></li><li><a href="/kod/sql-zapros/">SQL-запрос<span>Описание словами — запрос.</span></a></li><li><a href="/kod/regulyarnoe-vyrazhenie/">Регулярное выражение<span>С разбором каждой части.</span></a></li><li><a href="/kod/dokumentatsiya-readme/">Документация (README)<span>Описание проекта для GitHub.</span></a></li><li><a href="/kod/soobshchenie-kommita/">Сообщение коммита<span>По диффу — понятный коммит.</span></a></li><li><a href="/kod/bash-komanda/">Bash-команда<span>Нужная команда без поиска в интернете.</span></a></li><li><a href="/kod/uskorit-kod/">Ускорить код<span>Поиск узких мест и оптимизация.</span></a></li><li><a href="/kod/obrabotka-oshibok/">Обработка ошибок<span>Чтобы программа не падала молча.</span></a></li></ul>
-<p class="hint" style="margin-top:14px"><a class="link" href="/kod/">Все промты раздела →</a> · <a class="link" href="/">Все разделы →</a></p>
+<ul class="links"><li><a href="/kod/perevesti-na-drugoy-yazyk/">Перевести на другой язык<span>Код с одного языка на другой.</span></a></li><li><a href="/kod/sql-zapros/">SQL-запрос<span>Описание словами — запрос.</span></a></li><li><a href="/kod/regulyarnoe-vyrazhenie/">Регулярное выражение<span>С разбором каждой части.</span></a></li><li><a href="/kod/dokumentatsiya-readme/">Документация (README)<span>Описание проекта для GitHub.</span></a></li><li><a href="/kod/soobshchenie-kommita/">Сообщение коммита<span>По диффу — понятный коммит.</span></a></li><li><a href="/kod/bash-komanda/">Bash-команда<span>Нужная команда без поиска в интернете.</span></a></li><li><a href="/kod/uskorit-kod/">Ускорить код<span>Поиск узких мест и оптимизация.</span></a></li><li><a href="/kod/obrabotka-oshibok/">Обработка ошибок<span>Чтобы программа не падала молча.</span></a></li></ul>
+<p class="hint more"><a class="link" href="/kod/">Все промты раздела →</a> · <a class="link" href="/">Все разделы →</a></p>
 </section>
-<footer>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · <a href="/">Промтотека</a></footer>
+<footer>
+<p><b>Промты для нейросетей:</b> <a href="/promty-dlya-chatgpt/">ChatGPT</a> · <a href="/promty-dlya-claude/">Claude</a> · <a href="/promty-dlya-gigachat/">GigaChat</a> · <a href="/promty-dlya-yandexgpt/">YandexGPT</a> · <a href="/promty-dlya-deepseek/">DeepSeek</a> · <a href="/promty-dlya-midjourney/">Midjourney</a> · <a href="/promty-dlya-stable-diffusion/">Stable Diffusion</a> · <a href="/promty-dlya-suno/">Suno</a></p>
+<p><b>Гайды:</b> <a href="/gaydy/kak-pisat-promty/">Как писать промты</a> · <a href="/gaydy/kakuyu-neyroset-vybrat/">Какую нейросеть выбрать</a> · <a href="/gaydy/promty-dlya-kartinok/">Как писать промты для картинок</a> · <a href="/gaydy/kak-nachat-rabotat-s-api/">Как начать работать с API нейросетей</a></p>
+<p>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · <a href="/">Промтотека</a></p>
+</footer>
 </div>
 </body>
 </html>

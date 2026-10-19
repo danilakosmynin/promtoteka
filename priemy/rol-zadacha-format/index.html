@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Роль + задача + формат — приём промтинга | Промтотека</title>
 <meta name="description" content="Базовая формула хорошего промта. Ты — [роль, например: опытный маркетолог]. Задача: [что сделать]. Контекст: [для кого, зачем, ограничения]. Формат…">
 <link rel="canonical" href="https://promoteka.tech/priemy/rol-zadacha-format/">
@@ -20,32 +21,42 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/style.css?v=3">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Промтотека", "item": "https://promoteka.tech/"}, {"@type": "ListItem", "position": 2, "name": "Приёмы", "item": "https://promoteka.tech/priemy/"}, {"@type": "ListItem", "position": 3, "name": "Роль + задача + формат", "item": "https://promoteka.tech/priemy/rol-zadacha-format/"}]}</script>
-<script>window.CATS={"Тексты": "/teksty/", "Работа": "/rabota/", "Маркетинг": "/marketing/", "Код": "/kod/", "Учёба": "/ucheba/", "Перевод": "/perevod/", "Жизнь": "/zhizn/", "Изображения": "/izobrazheniya/", "Видео": "/video/", "Музыка": "/muzyka/", "Системные": "/sistemnye/", "Приёмы": "/priemy/", "API": "/api/"}</script>
-<script src="/app.js" defer></script>
+<script>window.SITE={"cats": {"Тексты": "/teksty/", "Работа": "/rabota/", "Маркетинг": "/marketing/", "Код": "/kod/", "Учёба": "/ucheba/", "Перевод": "/perevod/", "Жизнь": "/zhizn/", "Изображения": "/izobrazheniya/", "Видео": "/video/", "Музыка": "/muzyka/", "Системные": "/sistemnye/", "Приёмы": "/priemy/", "API": "/api/"}, "metrika": ""}</script>
+<script src="/app.js?v=3" defer></script>
 </head>
 <body>
 <div class="wrap">
+<div class="top"><a class="logo" href="/"><img src="/favicon.svg?v=2" width="24" height="24" alt="">Промтотека</a>
+<nav><a href="/gaydy/">Гайды</a><button class="theme" id="theme" type="button" aria-label="Сменить тему" title="Сменить тему"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg></button></nav></div>
 <header>
 <ol class="crumbs" aria-label="Навигация"><li><a href="/">Промтотека</a></li><li><a href="/priemy/">Приёмы</a></li><li>Роль + задача + формат</li></ol>
 <h1>Роль + задача + формат</h1>
 </header>
-<main class="prompt" style="display:flex;flex-direction:column;gap:14px">
+<main class="prompt" data-path="/priemy/rol-zadacha-format/">
 <p class="desc">Базовая формула хорошего промта.</p>
-<pre>Ты — [роль, например: опытный маркетолог].
+<details class="fill" open><summary>Заполнить поля · 4</summary><div class="fill-grid"><div class="field"><label for="v0">роль, например: опытный маркетолог</label><input id="v0" data-field="роль, например: опытный маркетолог" autocomplete="off"></div><div class="field"><label for="v1">что сделать</label><input id="v1" data-field="что сделать" autocomplete="off"></div><div class="field"><label for="v2">для кого, зачем, ограничения</label><input id="v2" data-field="для кого, зачем, ограничения" autocomplete="off"></div><div class="field"><label for="v3">список / таблица / до 100 слов</label><input id="v3" data-field="список / таблица / до 100 слов" autocomplete="off" list="o3"><datalist id="o3"><option>список</option><option>таблица</option><option>до 100 слов</option></datalist></div></div><button class="del" type="button" data-reset>Очистить поля</button></details>
+<pre data-src="Ты — [роль, например: опытный маркетолог].
+Задача: [что сделать].
+Контекст: [для кого, зачем, ограничения].
+Формат ответа: [список / таблица / до 100 слов].">Ты — [роль, например: опытный маркетолог].
 Задача: [что сделать].
 Контекст: [для кого, зачем, ограничения].
 Формат ответа: [список / таблица / до 100 слов].</pre>
-<div class="row"><button class="btn primary" data-copy>Копировать</button></div>
-<p class="hint">Скопируйте текст, замените слова в [квадратных скобках] на свои и отправьте нейросети.</p>
+<div class="row"><button class="btn primary" type="button" data-copy>Копировать</button><button class="btn" type="button" data-open="chatgpt">Открыть в ChatGPT</button><button class="btn" type="button" data-open="claude">Открыть в Claude</button><details class="share"><summary class="btn">Поделиться</summary><div><a href="https://t.me/share/url?url=https%3A//promoteka.tech/priemy/rol-zadacha-format/&amp;text=%D0%A0%D0%BE%D0%BB%D1%8C%20%2B%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B0%20%2B%20%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82" target="_blank" rel="noopener">Telegram</a><a href="https://vk.com/share.php?url=https%3A//promoteka.tech/priemy/rol-zadacha-format/" target="_blank" rel="noopener">ВКонтакте</a><button type="button" data-copylink="https://promoteka.tech/priemy/rol-zadacha-format/">Скопировать ссылку</button></div></details><button class="star" type="button" data-fav="/priemy/rol-zadacha-format/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+<p class="hint">Заполните поля — текст обновится сразу. Затем скопируйте его или откройте в нейросети.</p>
 </main>
 <section class="related">
 <h2>Ещё в разделе «Приёмы»</h2>
-<ul><li><a href="/priemy/poprosit-utochnit/">Попросить уточнить<span>Нейросеть сначала задаёт вопросы.</span></a></li><li><a href="/priemy/rassuzhdat-po-shagam/">Рассуждать по шагам<span>Для логики, расчётов и сложных вопросов.</span></a></li><li><a href="/priemy/primery-v-promte/">Примеры в промте<span>Покажите 2–3 образца — получите в том же стиле.</span></a></li><li><a href="/priemy/proverka-otveta/">Проверка ответа<span>Просим найти слабые места в собственном ответе.</span></a></li><li><a href="/priemy/neskolko-variantov/">Несколько вариантов<span>Чтобы было из чего выбрать.</span></a></li><li><a href="/priemy/kritik/">Критик<span>Найти слабые места в идее.</span></a></li><li><a href="/priemy/uluchshit-promt/">Улучшить промт<span>Нейросеть дорабатывает ваш промт.</span></a></li><li><a href="/priemy/razdeliteli/">Разделители<span>Чтобы нейросеть не путала инструкцию и данные.</span></a></li></ul>
-<p class="hint" style="margin-top:14px"><a class="link" href="/priemy/">Все промты раздела →</a> · <a class="link" href="/">Все разделы →</a></p>
+<ul class="links"><li><a href="/priemy/poprosit-utochnit/">Попросить уточнить<span>Нейросеть сначала задаёт вопросы.</span></a></li><li><a href="/priemy/rassuzhdat-po-shagam/">Рассуждать по шагам<span>Для логики, расчётов и сложных вопросов.</span></a></li><li><a href="/priemy/primery-v-promte/">Примеры в промте<span>Покажите 2–3 образца — получите в том же стиле.</span></a></li><li><a href="/priemy/proverka-otveta/">Проверка ответа<span>Просим найти слабые места в собственном ответе.</span></a></li><li><a href="/priemy/neskolko-variantov/">Несколько вариантов<span>Чтобы было из чего выбрать.</span></a></li><li><a href="/priemy/kritik/">Критик<span>Найти слабые места в идее.</span></a></li><li><a href="/priemy/uluchshit-promt/">Улучшить промт<span>Нейросеть дорабатывает ваш промт.</span></a></li><li><a href="/priemy/razdeliteli/">Разделители<span>Чтобы нейросеть не путала инструкцию и данные.</span></a></li></ul>
+<p class="hint more"><a class="link" href="/priemy/">Все промты раздела →</a> · <a class="link" href="/">Все разделы →</a></p>
 </section>
-<footer>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · <a href="/">Промтотека</a></footer>
+<footer>
+<p><b>Промты для нейросетей:</b> <a href="/promty-dlya-chatgpt/">ChatGPT</a> · <a href="/promty-dlya-claude/">Claude</a> · <a href="/promty-dlya-gigachat/">GigaChat</a> · <a href="/promty-dlya-yandexgpt/">YandexGPT</a> · <a href="/promty-dlya-deepseek/">DeepSeek</a> · <a href="/promty-dlya-midjourney/">Midjourney</a> · <a href="/promty-dlya-stable-diffusion/">Stable Diffusion</a> · <a href="/promty-dlya-suno/">Suno</a></p>
+<p><b>Гайды:</b> <a href="/gaydy/kak-pisat-promty/">Как писать промты</a> · <a href="/gaydy/kakuyu-neyroset-vybrat/">Какую нейросеть выбрать</a> · <a href="/gaydy/promty-dlya-kartinok/">Как писать промты для картинок</a> · <a href="/gaydy/kak-nachat-rabotat-s-api/">Как начать работать с API нейросетей</a></p>
+<p>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · <a href="/">Промтотека</a></p>
+</footer>
 </div>
 </body>
 </html>

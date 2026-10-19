@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Основные параметры — пример запроса к API | Промтотека</title>
 <meta name="description" content="Что значат настройки запроса. temperature 0–2 творчество: 0 — точно и одинаково, 1+ — разнообразно max_tokens предел длины ответа (1 токен ≈ 3–4 символа…">
 <link rel="canonical" href="https://promoteka.tech/api/osnovnye-parametry/">
@@ -20,33 +21,44 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/style.css?v=3">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Промтотека", "item": "https://promoteka.tech/"}, {"@type": "ListItem", "position": 2, "name": "API", "item": "https://promoteka.tech/api/"}, {"@type": "ListItem", "position": 3, "name": "Основные параметры", "item": "https://promoteka.tech/api/osnovnye-parametry/"}]}</script>
-<script>window.CATS={"Тексты": "/teksty/", "Работа": "/rabota/", "Маркетинг": "/marketing/", "Код": "/kod/", "Учёба": "/ucheba/", "Перевод": "/perevod/", "Жизнь": "/zhizn/", "Изображения": "/izobrazheniya/", "Видео": "/video/", "Музыка": "/muzyka/", "Системные": "/sistemnye/", "Приёмы": "/priemy/", "API": "/api/"}</script>
-<script src="/app.js" defer></script>
+<script>window.SITE={"cats": {"Тексты": "/teksty/", "Работа": "/rabota/", "Маркетинг": "/marketing/", "Код": "/kod/", "Учёба": "/ucheba/", "Перевод": "/perevod/", "Жизнь": "/zhizn/", "Изображения": "/izobrazheniya/", "Видео": "/video/", "Музыка": "/muzyka/", "Системные": "/sistemnye/", "Приёмы": "/priemy/", "API": "/api/"}, "metrika": ""}</script>
+<script src="/app.js?v=3" defer></script>
 </head>
 <body>
 <div class="wrap">
+<div class="top"><a class="logo" href="/"><img src="/favicon.svg?v=2" width="24" height="24" alt="">Промтотека</a>
+<nav><a href="/gaydy/">Гайды</a><button class="theme" id="theme" type="button" aria-label="Сменить тему" title="Сменить тему"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg></button></nav></div>
 <header>
 <ol class="crumbs" aria-label="Навигация"><li><a href="/">Промтотека</a></li><li><a href="/api/">API</a></li><li>Основные параметры</li></ol>
 <h1>Основные параметры</h1>
 </header>
-<main class="prompt" style="display:flex;flex-direction:column;gap:14px">
+<main class="prompt" data-path="/api/osnovnye-parametry/">
 <p class="desc">Что значат настройки запроса.</p>
-<pre>temperature   0–2   творчество: 0 — точно и одинаково, 1+ — разнообразно
+
+<pre data-src="temperature   0–2   творчество: 0 — точно и одинаково, 1+ — разнообразно
+max_tokens          предел длины ответа (1 токен ≈ 3–4 символа текста)
+top_p         0–1   альтернатива temperature, меняйте что-то одно
+stop                строки, на которых ответ обрывается
+system              инструкция-роль для всей переписки">temperature   0–2   творчество: 0 — точно и одинаково, 1+ — разнообразно
 max_tokens          предел длины ответа (1 токен ≈ 3–4 символа текста)
 top_p         0–1   альтернатива temperature, меняйте что-то одно
 stop                строки, на которых ответ обрывается
 system              инструкция-роль для всей переписки</pre>
-<div class="row"><button class="btn primary" data-copy>Копировать</button></div>
+<div class="row"><button class="btn primary" type="button" data-copy>Копировать</button><details class="share"><summary class="btn">Поделиться</summary><div><a href="https://t.me/share/url?url=https%3A//promoteka.tech/api/osnovnye-parametry/&amp;text=%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D0%B5%20%D0%BF%D0%B0%D1%80%D0%B0%D0%BC%D0%B5%D1%82%D1%80%D1%8B" target="_blank" rel="noopener">Telegram</a><a href="https://vk.com/share.php?url=https%3A//promoteka.tech/api/osnovnye-parametry/" target="_blank" rel="noopener">ВКонтакте</a><button type="button" data-copylink="https://promoteka.tech/api/osnovnye-parametry/">Скопировать ссылку</button></div></details><button class="star" type="button" data-fav="/api/osnovnye-parametry/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
 <p class="hint">Подставьте свой ключ и название модели из документации.</p>
 </main>
 <section class="related">
 <h2>Ещё в разделе «API»</h2>
-<ul><li><a href="/api/klyuch-v-fayle-env/">Ключ в файле .env<span>Чтобы ключ не попал в код и в Git.</span></a></li><li><a href="/api/openai-responses-api/">OpenAI — Responses API<span>Новый основной способ запросов к моделям OpenAI.</span></a></li><li><a href="/api/openai-embeddingi/">OpenAI — эмбеддинги<span>Векторы текста для поиска и рекомендаций.</span></a></li><li><a href="/api/openai-raspoznat-rech/">OpenAI — распознать речь<span>Аудио в текст.</span></a></li><li><a href="/api/openai-ozvuchit-tekst/">OpenAI — озвучить текст<span>Текст в аудиофайл.</span></a></li><li><a href="/api/anthropic-claude-potokovyy-otvet/">Anthropic (Claude) — потоковый ответ<span>Текст печатается по мере генерации. pip install anthropic</span></a></li><li><a href="/api/anthropic-claude-instrumenty/">Anthropic (Claude) — инструменты<span>Модель сама решает вызвать вашу функцию.</span></a></li><li><a href="/api/anthropic-claude-kartinka-na-vkhod/">Anthropic (Claude) — картинка на вход<span>Спросить модель о содержимом изображения.</span></a></li></ul>
-<p class="hint" style="margin-top:14px"><a class="link" href="/api/">Все промты раздела →</a> · <a class="link" href="/">Все разделы →</a></p>
+<ul class="links"><li><a href="/api/klyuch-v-fayle-env/">Ключ в файле .env<span>Чтобы ключ не попал в код и в Git.</span></a></li><li><a href="/api/openai-responses-api/">OpenAI — Responses API<span>Новый основной способ запросов к моделям OpenAI.</span></a></li><li><a href="/api/openai-embeddingi/">OpenAI — эмбеддинги<span>Векторы текста для поиска и рекомендаций.</span></a></li><li><a href="/api/openai-raspoznat-rech/">OpenAI — распознать речь<span>Аудио в текст.</span></a></li><li><a href="/api/openai-ozvuchit-tekst/">OpenAI — озвучить текст<span>Текст в аудиофайл.</span></a></li><li><a href="/api/anthropic-claude-potokovyy-otvet/">Anthropic (Claude) — потоковый ответ<span>Текст печатается по мере генерации. pip install anthropic</span></a></li><li><a href="/api/anthropic-claude-instrumenty/">Anthropic (Claude) — инструменты<span>Модель сама решает вызвать вашу функцию.</span></a></li><li><a href="/api/anthropic-claude-kartinka-na-vkhod/">Anthropic (Claude) — картинка на вход<span>Спросить модель о содержимом изображения.</span></a></li></ul>
+<p class="hint more"><a class="link" href="/api/">Все промты раздела →</a> · <a class="link" href="/">Все разделы →</a></p>
 </section>
-<footer>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · <a href="/">Промтотека</a></footer>
+<footer>
+<p><b>Промты для нейросетей:</b> <a href="/promty-dlya-chatgpt/">ChatGPT</a> · <a href="/promty-dlya-claude/">Claude</a> · <a href="/promty-dlya-gigachat/">GigaChat</a> · <a href="/promty-dlya-yandexgpt/">YandexGPT</a> · <a href="/promty-dlya-deepseek/">DeepSeek</a> · <a href="/promty-dlya-midjourney/">Midjourney</a> · <a href="/promty-dlya-stable-diffusion/">Stable Diffusion</a> · <a href="/promty-dlya-suno/">Suno</a></p>
+<p><b>Гайды:</b> <a href="/gaydy/kak-pisat-promty/">Как писать промты</a> · <a href="/gaydy/kakuyu-neyroset-vybrat/">Какую нейросеть выбрать</a> · <a href="/gaydy/promty-dlya-kartinok/">Как писать промты для картинок</a> · <a href="/gaydy/kak-nachat-rabotat-s-api/">Как начать работать с API нейросетей</a></p>
+<p>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · <a href="/">Промтотека</a></p>
+</footer>
 </div>
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>План выпуска подкаста — промт для видео | Промтотека</title>
 <meta name="description" content="Темы, вопросы и тайминг. Составь план выпуска подкаста на тему «[тема]» на [число] минут. Гость: [кто] (если есть). Структура с таймингом: вступление…">
 <link rel="canonical" href="https://promoteka.tech/video/plan-vypuska-podkasta/">
@@ -20,29 +21,36 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/style.css?v=3">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Промтотека", "item": "https://promoteka.tech/"}, {"@type": "ListItem", "position": 2, "name": "Видео", "item": "https://promoteka.tech/video/"}, {"@type": "ListItem", "position": 3, "name": "План выпуска подкаста", "item": "https://promoteka.tech/video/plan-vypuska-podkasta/"}]}</script>
-<script>window.CATS={"Тексты": "/teksty/", "Работа": "/rabota/", "Маркетинг": "/marketing/", "Код": "/kod/", "Учёба": "/ucheba/", "Перевод": "/perevod/", "Жизнь": "/zhizn/", "Изображения": "/izobrazheniya/", "Видео": "/video/", "Музыка": "/muzyka/", "Системные": "/sistemnye/", "Приёмы": "/priemy/", "API": "/api/"}</script>
-<script src="/app.js" defer></script>
+<script>window.SITE={"cats": {"Тексты": "/teksty/", "Работа": "/rabota/", "Маркетинг": "/marketing/", "Код": "/kod/", "Учёба": "/ucheba/", "Перевод": "/perevod/", "Жизнь": "/zhizn/", "Изображения": "/izobrazheniya/", "Видео": "/video/", "Музыка": "/muzyka/", "Системные": "/sistemnye/", "Приёмы": "/priemy/", "API": "/api/"}, "metrika": ""}</script>
+<script src="/app.js?v=3" defer></script>
 </head>
 <body>
 <div class="wrap">
+<div class="top"><a class="logo" href="/"><img src="/favicon.svg?v=2" width="24" height="24" alt="">Промтотека</a>
+<nav><a href="/gaydy/">Гайды</a><button class="theme" id="theme" type="button" aria-label="Сменить тему" title="Сменить тему"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg></button></nav></div>
 <header>
 <ol class="crumbs" aria-label="Навигация"><li><a href="/">Промтотека</a></li><li><a href="/video/">Видео</a></li><li>План выпуска подкаста</li></ol>
 <h1>План выпуска подкаста</h1>
 </header>
-<main class="prompt" style="display:flex;flex-direction:column;gap:14px">
+<main class="prompt" data-path="/video/plan-vypuska-podkasta/">
 <p class="desc">Темы, вопросы и тайминг.</p>
-<pre>Составь план выпуска подкаста на тему «[тема]» на [число] минут. Гость: [кто] (если есть). Структура с таймингом: вступление, представление гостя, 3–4 блока с вопросами, рубрика [если есть], итоги, анонс следующего выпуска. Плюс 3 варианта названия выпуска.</pre>
-<div class="row"><button class="btn primary" data-copy>Копировать</button></div>
-<p class="hint">Скопируйте текст, замените слова в [квадратных скобках] на свои и отправьте нейросети.</p>
+<details class="fill" open><summary>Заполнить поля · 4</summary><div class="fill-grid"><div class="field"><label for="v0">тема</label><input id="v0" data-field="тема" autocomplete="off"></div><div class="field"><label for="v1">число</label><input id="v1" data-field="число" autocomplete="off"></div><div class="field"><label for="v2">кто</label><input id="v2" data-field="кто" autocomplete="off"></div><div class="field"><label for="v3">если есть</label><input id="v3" data-field="если есть" autocomplete="off"></div></div><button class="del" type="button" data-reset>Очистить поля</button></details>
+<pre data-src="Составь план выпуска подкаста на тему «[тема]» на [число] минут. Гость: [кто] (если есть). Структура с таймингом: вступление, представление гостя, 3–4 блока с вопросами, рубрика [если есть], итоги, анонс следующего выпуска. Плюс 3 варианта названия выпуска.">Составь план выпуска подкаста на тему «[тема]» на [число] минут. Гость: [кто] (если есть). Структура с таймингом: вступление, представление гостя, 3–4 блока с вопросами, рубрика [если есть], итоги, анонс следующего выпуска. Плюс 3 варианта названия выпуска.</pre>
+<div class="row"><button class="btn primary" type="button" data-copy>Копировать</button><button class="btn" type="button" data-open="chatgpt">Открыть в ChatGPT</button><button class="btn" type="button" data-open="claude">Открыть в Claude</button><details class="share"><summary class="btn">Поделиться</summary><div><a href="https://t.me/share/url?url=https%3A//promoteka.tech/video/plan-vypuska-podkasta/&amp;text=%D0%9F%D0%BB%D0%B0%D0%BD%20%D0%B2%D1%8B%D0%BF%D1%83%D1%81%D0%BA%D0%B0%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%B0%D1%81%D1%82%D0%B0" target="_blank" rel="noopener">Telegram</a><a href="https://vk.com/share.php?url=https%3A//promoteka.tech/video/plan-vypuska-podkasta/" target="_blank" rel="noopener">ВКонтакте</a><button type="button" data-copylink="https://promoteka.tech/video/plan-vypuska-podkasta/">Скопировать ссылку</button></div></details><button class="star" type="button" data-fav="/video/plan-vypuska-podkasta/" aria-pressed="false" title="В избранное" aria-label="В избранное">☆</button></div>
+<p class="hint">Заполните поля — текст обновится сразу. Затем скопируйте его или откройте в нейросети.</p>
 </main>
 <section class="related">
 <h2>Ещё в разделе «Видео»</h2>
-<ul><li><a href="/video/tekst-na-ekrane/">Текст на экране<span>Надписи для коротких видео.</span></a></li><li><a href="/video/shablon-dlya-video/">Шаблон для видео<span>Для Sora, Veo, Runway, Kling и похожих.</span></a></li><li><a href="/video/stsenariy-rolika/">Сценарий ролика<span>Короткое видео для соцсетей.</span></a></li><li><a href="/video/idei-dlya-rolikov/">Идеи для роликов<span>Темы для канала.</span></a></li><li><a href="/video/opisanie-dlya-youtube/">Описание для YouTube<span>Описание и таймкоды.</span></a></li><li><a href="/video/raskadrovka/">Раскадровка<span>Кадр за кадром до съёмки.</span></a></li><li><a href="/video/reklamnyy-rolik-na-30-sekund/">Рекламный ролик на 30 секунд<span>Сценарий короткой рекламы.</span></a></li><li><a href="/video/plan-montazha/">План монтажа<span>Из сырого материала — в готовое видео.</span></a></li></ul>
-<p class="hint" style="margin-top:14px"><a class="link" href="/video/">Все промты раздела →</a> · <a class="link" href="/">Все разделы →</a></p>
+<ul class="links"><li><a href="/video/tekst-na-ekrane/">Текст на экране<span>Надписи для коротких видео.</span></a></li><li><a href="/video/shablon-dlya-video/">Шаблон для видео<span>Для Sora, Veo, Runway, Kling и похожих.</span></a></li><li><a href="/video/stsenariy-rolika/">Сценарий ролика<span>Короткое видео для соцсетей.</span></a></li><li><a href="/video/idei-dlya-rolikov/">Идеи для роликов<span>Темы для канала.</span></a></li><li><a href="/video/opisanie-dlya-youtube/">Описание для YouTube<span>Описание и таймкоды.</span></a></li><li><a href="/video/raskadrovka/">Раскадровка<span>Кадр за кадром до съёмки.</span></a></li><li><a href="/video/reklamnyy-rolik-na-30-sekund/">Рекламный ролик на 30 секунд<span>Сценарий короткой рекламы.</span></a></li><li><a href="/video/plan-montazha/">План монтажа<span>Из сырого материала — в готовое видео.</span></a></li></ul>
+<p class="hint more"><a class="link" href="/video/">Все промты раздела →</a> · <a class="link" href="/">Все разделы →</a></p>
 </section>
-<footer>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · <a href="/">Промтотека</a></footer>
+<footer>
+<p><b>Промты для нейросетей:</b> <a href="/promty-dlya-chatgpt/">ChatGPT</a> · <a href="/promty-dlya-claude/">Claude</a> · <a href="/promty-dlya-gigachat/">GigaChat</a> · <a href="/promty-dlya-yandexgpt/">YandexGPT</a> · <a href="/promty-dlya-deepseek/">DeepSeek</a> · <a href="/promty-dlya-midjourney/">Midjourney</a> · <a href="/promty-dlya-stable-diffusion/">Stable Diffusion</a> · <a href="/promty-dlya-suno/">Suno</a></p>
+<p><b>Гайды:</b> <a href="/gaydy/kak-pisat-promty/">Как писать промты</a> · <a href="/gaydy/kakuyu-neyroset-vybrat/">Какую нейросеть выбрать</a> · <a href="/gaydy/promty-dlya-kartinok/">Как писать промты для картинок</a> · <a href="/gaydy/kak-nachat-rabotat-s-api/">Как начать работать с API нейросетей</a></p>
+<p>Слова в [квадратных скобках] замените на свои. Названия моделей меняются часто — актуальные смотрите в документации по ссылке. · <a href="/">Промтотека</a></p>
+</footer>
 </div>
 </body>
 </html>
