@@ -58,8 +58,7 @@ CAT_CARD = {
 SHELVES = [
     ("Тексты и работа", ["Тексты", "Работа", "Маркетинг", "Перевод"]),
     ("Учёба и код", ["Учёба", "Код", "Задачи", "API"]),
-    ("Творчество", ["Изображения", "Видео", "Музыка"]),
-    ("Повседневное", ["Жизнь"]),
+    ("Творчество и быт", ["Изображения", "Видео", "Музыка", "Жизнь"]),
     ("Мастерство промтов", ["Приёмы", "Системные"]),
 ]
 
@@ -131,6 +130,17 @@ def footer(ai_pages, guides):
 
 
 FOOTER = ""  # заполняется в main()
+TOP_CTA = (f'<a class="btn primary sm" href="{e(CFG["telegram_channel"])}" target="_blank" rel="noopener">Промт дня</a>'
+           if CFG.get("telegram_channel") else "")
+
+# Вопросы и ответы на главной (и разметка FAQPage для поиска)
+FAQ = [
+    ("Это бесплатно?", "Да. Все промты открыты, регистрация не нужна. Платить нужно только самим нейросетям, если вы пользуетесь их платными тарифами."),
+    ("Для каких нейросетей подходят промты?", "Для любых чат-нейросетей: ChatGPT, Claude, GigaChat, Алиса с YandexGPT, DeepSeek, Gemini. Отдельно есть шаблоны для Midjourney, Stable Diffusion, Suno и шпаргалки по API."),
+    ("Что значат слова в [квадратных скобках]?", "Это места, которые нужно заменить своими данными: тему, аудиторию, текст. На странице промта для каждого такого места есть поле — заполните его, и текст обновится сам."),
+    ("Как отправить промт в нейросеть?", "Нажмите «Копировать» и вставьте текст в чат. Или нажмите «Открыть в ChatGPT» или «Открыть в Claude» — чат откроется сразу с заполненным промтом. Для Алисы текст копируется, его остаётся вставить."),
+    ("Где хранятся мои промты и избранное?", "Только в вашем браузере, на сервер ничего не отправляется. Если очистить данные сайта или открыть его на другом устройстве, списка там не будет."),
+]
 
 
 def page(*, title, desc, path, body, ld=None, og_type="website"):
@@ -162,15 +172,15 @@ def page(*, title, desc, path, body, ld=None, og_type="website"):
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="/style.css?v=8">{lds}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;600;700&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="/style.css?v=14">{lds}
 <script>window.SITE={site_js}</script>
 <script src="/app.js?v=9" defer></script>{m_head}
 </head>
 <body>
 {m_body}<div class="wrap">
 <div class="top"><a class="logo" href="/"><img src="/favicon.svg?v=2" width="24" height="24" alt="">{NAME}</a>
-<nav><a href="/#razdely">Разделы</a><a href="/{GUIDES_DIR}/">Гайды</a><a href="/#izbrannoe" aria-label="Избранное" title="Избранное">★</a><button class="theme" id="theme" type="button" aria-label="Сменить тему" title="Сменить тему"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg></button></nav></div>
+<nav><a href="/#razdely">Разделы</a><a href="/{GUIDES_DIR}/">Гайды</a>{TOP_CTA}<a href="/#izbrannoe" aria-label="Избранное" title="Избранное">★</a><button class="theme" id="theme" type="button" aria-label="Сменить тему" title="Сменить тему"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg></button></nav></div>
 {body}
 {FOOTER}
 </div>
@@ -334,9 +344,9 @@ def main():
     new = sorted((p for p in prompts if p.get("added")), key=lambda p: p["added"], reverse=True)
     new = round_robin(new, lambda p: p["cat"])[:6]
     start = by_titles(CFG.get("start_here", []), "site.json → start_here")[:6]
-    picks = f"""<section class="picks" id="picks">
-<div><h2>С чего начать</h2>{link_list(start)}</div>
-<div><h2>Новое</h2>{link_list(new)}</div>
+    picks = f"""<section class="panel picks" id="picks">
+<div><span class="label">[с чего начать]</span>{link_list(start)}</div>
+<div><span class="label">[новое на сайте]</span>{link_list(new)}</div>
 </section>
 """ if new and start else ""
     options = "".join(f"<option>{e(c)}</option>" for c in ["Мои", *CATS])
@@ -345,17 +355,24 @@ def main():
     if missing:
         raise SystemExit(f"Разделы не разложены по полкам (SHELVES в build.py): {missing}")
     shelves = "".join(
-        f'<section class="shelf"><h2>{e(t)}</h2><div class="cats">' + "".join(
+        f'<section class="shelf"><h3>{e(t)}</h3><div class="cats">' + "".join(
             f'<a class="cat" href="/{CATS[c][0]}/"><span class="ico">{CAT_CARD[c][0]}</span><span class="txt"><b>{e(c)}</b>'
             f'<span>{e(CAT_CARD[c][1])}</span></span><span class="num">{count[c]}</span></a>' for c in cs) + "</div></section>"
         for t, cs in SHELVES)
     ai_chips = "".join(f'<a class="chip" href="/{a["slug"]}/">{e(a["name"])}</a>' for a in ai_pages)
-    guide_cards = "".join(f'<a class="gcard" href="/{GUIDES_DIR}/{g["slug"]}/"><b>{e(g["h1"])}</b><span>{e(cut(g["description"], 90))}</span></a>' for g in guides)
-    body = f"""<header class="hero">
-<h1>Готовые промты для нейросетей</h1>
-<p>{len(prompts)} шаблонов на русском для ChatGPT, Claude, GigaChat, Алисы и других. Выберите задачу, заполните поля — и откройте промт в чате одной кнопкой.</p>
-</header>
+    guide_cards = "".join(f'<a class="gcard" href="/{GUIDES_DIR}/{g["slug"]}/"><b>{e(g["h1"])}</b><span>{e(cut(g["description"], 90))}</span><i>Читать →</i></a>' for g in guides)
+    faq = "".join(f'<details class="faq"><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in FAQ)
+    tg = CFG.get("telegram_channel")
+    band = f"""<section class="band"><div><span class="label">[telegram-канал]</span><h2 class="h2">Промт дня в Telegram</h2>
+<p>Каждый день — один полезный промт с подсказкой, когда он пригодится.</p></div>
+<a class="btn dark" href="{e(tg)}" target="_blank" rel="noopener">Подписаться →</a></section>""" if tg else ""
+    body = f"""<section class="hero">
+<span class="label">[библиотека промтов]</span>
+<h1 class="display">Промтотека</h1>
+<p class="lead">Готовые промты для нейросетей на русском. Выберите задачу, заполните поля — и откройте промт в ChatGPT, Claude или Алисе одной кнопкой.</p>
 <input id="q" class="search" type="search" placeholder="Найти промт: резюме, пост, SQL…" aria-label="Поиск">
+<div class="stats"><div><b>{len(prompts)}</b><span>промтов</span></div><div><b>{len(CATS)}</b><span>разделов</span></div><div><b>{len(ai_pages)}</b><span>нейросетей</span></div><div><b>0 ₽</b><span>без регистрации</span></div></div>
+</section>
 <div class="quick" id="quick"></div>
 <section class="results" id="results" hidden>
 <p class="count" id="count"></p>
@@ -365,15 +382,25 @@ def main():
 <p class="empty" id="empty" hidden></p>
 </section>
 <div class="home" id="home">
-<div class="shelves" id="razdely">{shelves}</div>
-{picks}<section class="block"><h2>Промты для конкретной нейросети</h2><div class="chips">{ai_chips}</div></section>
-<section class="block"><h2>Гайды</h2><div class="gcards">{guide_cards}</div></section>
+<section class="panel" id="razdely"><span class="label">[разделы]</span><h2 class="h2">Всё по полкам</h2><div class="shelves">{shelves}</div></section>
+<section class="panel alt steps-panel"><span class="label">[как это работает]</span><h2 class="h2">Три шага до ответа</h2>
+<ol class="steps">
+<li><b>01</b><h3>Выберите промт</h3><p>Найдите задачу поиском или в разделах: письмо, пост, код, картинка.</p></li>
+<li><b>02</b><h3>Заполните поля</h3><p>Впишите своё в места <mark>[в скобках]</mark> — текст промта обновится сразу.</p></li>
+<li><b>03</b><h3>Откройте в чате</h3><p>Скопируйте или откройте одной кнопкой в ChatGPT, Claude или Алисе.</p></li>
+</ol></section>
+{picks}<section class="panel"><span class="label">[нейросети]</span><h2 class="h2">Под вашу нейросеть</h2><div class="chips">{ai_chips}</div>
+<span class="label gap">[гайды]</span><div class="gcards">{guide_cards}</div></section>
+<section class="panel alt faq-panel"><div><span class="label">[вопросы]</span><h2 class="h2">Отвечаем на вопросы</h2><p class="muted">Не нашли ответ — напишите в наш Telegram-канал.</p></div><div class="faqs">{faq}</div></section>
+{band}
 {ADD_FORM.format(options=options)}</div>"""
     write("index.html", page(
         title=f"{NAME} — готовые промты для ChatGPT, Claude и других нейросетей",
         desc=f"{len(prompts)} готовых промтов на русском для ChatGPT, Claude, Gemini, YandexGPT и GigaChat: тексты, работа, код, учёба, картинки, видео, а также шпаргалки по API нейросетей.",
         path="/", body=body,
-        ld=[{"@context": "https://schema.org", "@type": "WebSite", "name": NAME, "url": SITE + "/", "inLanguage": "ru"}]))
+        ld=[{"@context": "https://schema.org", "@type": "WebSite", "name": NAME, "url": SITE + "/", "inLanguage": "ru"},
+            {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+                {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]}]))
 
     # Разделы
     for c, (slug, h1, intro, kind) in CATS.items():
