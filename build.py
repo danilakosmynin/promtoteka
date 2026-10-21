@@ -54,6 +54,29 @@ CAT_CARD = {
     "Системные": ("⚙️", "Готовые инструкции для нейросети"),
 }
 
+# Однотонные значки разделов (24×24, линии цветом текста)
+ICONS = {
+    "Тексты": '<path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4z"/><path d="M13.5 6.5l4 4"/>',
+    "Работа": '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/>',
+    "Маркетинг": '<path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/>',
+    "Перевод": '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3z"/>',
+    "Учёба": '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/>',
+    "Код": '<path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/>',
+    "Задачи": '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M14 11h2M8 15h2M14 15h2M8 18h2M14 18h2"/>',
+    "API": '<path d="M9 7V3M15 7V3M7 7h10v4a5 5 0 0 1-10 0z"/><path d="M12 16v5"/>',
+    "Изображения": '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-9 9"/>',
+    "Видео": '<rect x="3" y="5" width="13" height="14" rx="2"/><path d="M16 10l5-3v10l-5-3z"/>',
+    "Музыка": '<path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/>',
+    "Жизнь": '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10M10 20v-6h4v6"/>',
+    "Приёмы": '<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.2h5c0-.9.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/>',
+    "Системные": '<path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>',
+}
+
+
+def icon(c):
+    return f'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[c]}</svg>'
+
+
 # Полки на главной: какие разделы рядом
 SHELVES = [
     ("Тексты и работа", ["Тексты", "Работа", "Маркетинг", "Перевод"]),
@@ -165,21 +188,21 @@ def page(*, title, desc, path, body, ld=None, og_type="website"):
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{SITE}/og.png?v=2">
+<meta property="og:image" content="{SITE}/og.png?v=3">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
-<link rel="icon" href="/favicon-32.png?v=2" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png?v=3" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;600;700&family=JetBrains+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="/style.css?v=14">{lds}
+<link rel="stylesheet" href="/style.css?v=17">{lds}
 <script>window.SITE={site_js}</script>
-<script src="/app.js?v=9" defer></script>{m_head}
+<script src="/app.js?v=10" defer></script>{m_head}
 </head>
 <body>
 {m_body}<div class="wrap">
-<div class="top"><a class="logo" href="/"><img src="/favicon.svg?v=2" width="24" height="24" alt="">{NAME}</a>
+<div class="top"><a class="logo" href="/"><img src="/favicon.svg?v=3" width="24" height="24" alt="">{NAME}</a>
 <nav><a href="/#razdely">Разделы</a><a href="/{GUIDES_DIR}/">Гайды</a>{TOP_CTA}<a href="/#izbrannoe" aria-label="Избранное" title="Избранное">★</a><button class="theme" id="theme" type="button" aria-label="Сменить тему" title="Сменить тему"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg></button></nav></div>
 {body}
 {FOOTER}
@@ -215,12 +238,12 @@ def fav_btn(p):
 def card(p, show_cat=True):
     tag = f'<a class="tag" href="/{CATS[p["cat"]][0]}/">{e(p["cat"])}</a>' if show_cat else ""
     link = f'<a class="link" href="{e(p["link"])}" target="_blank" rel="noopener">Документация →</a>' if p.get("link") else ""
-    fill = f'<a class="link" href="{p["path"]}">Заполнить поля →</a>' if p["fields"] else ""
+    fill = f'<a class="link" href="{p["path"]}">Заполнить →</a>' if p["fields"] else ""
     desc = f'<p class="desc">{e(p["desc"])}</p>' if p.get("desc") else ""
-    more = '<button class="link expand" type="button" data-expand hidden>Показать полностью ↓</button>'  # app.js покажет, если текст не влез
+    more = '<button class="expand" type="button" data-expand hidden aria-label="Показать полностью">Полностью ↓</button>'  # app.js покажет, если текст не влез
     return f"""<article class="item" data-path="{p["path"]}">
 <div class="head"><h2><a href="{p["path"]}">{e(p["title"])}</a></h2>{tag}</div>
-{desc}<pre class="clamp">{e(p["text"])}</pre>{more}
+{desc}<div class="pw"><pre class="clamp">{e(p["text"])}</pre>{more}</div>
 <div class="row"><button class="btn" data-copy>Копировать</button>{fill}{link}{fav_btn(p)}</div>
 </article>"""
 
@@ -351,12 +374,12 @@ def main():
 """ if new and start else ""
     options = "".join(f"<option>{e(c)}</option>" for c in ["Мои", *CATS])
     count = {c: sum(1 for p in prompts if p["cat"] == c) for c in CATS}
-    missing = set(CATS) - {c for _, cs in SHELVES for c in cs}
+    missing = (set(CATS) - {c for _, cs in SHELVES for c in cs}) | (set(CATS) - set(ICONS))
     if missing:
-        raise SystemExit(f"Разделы не разложены по полкам (SHELVES в build.py): {missing}")
+        raise SystemExit(f"Разделам не хватает полки (SHELVES) или значка (ICONS) в build.py: {missing}")
     shelves = "".join(
         f'<section class="shelf"><h3>{e(t)}</h3><div class="cats">' + "".join(
-            f'<a class="cat" href="/{CATS[c][0]}/"><span class="ico">{CAT_CARD[c][0]}</span><span class="txt"><b>{e(c)}</b>'
+            f'<a class="cat" href="/{CATS[c][0]}/"><span class="ico">{icon(c)}</span><span class="txt"><b>{e(c)}</b>'
             f'<span>{e(CAT_CARD[c][1])}</span></span><span class="num">{count[c]}</span></a>' for c in cs) + "</div></section>"
         for t, cs in SHELVES)
     ai_chips = "".join(f'<a class="chip" href="/{a["slug"]}/">{e(a["name"])}</a>' for a in ai_pages)

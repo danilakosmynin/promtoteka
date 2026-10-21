@@ -91,7 +91,6 @@ function markLong(){
     const box = b.closest(".item"), pre = box.querySelector("pre");
     if (box.hidden || !pre.clientHeight) continue;
     if (pre.scrollHeight > pre.clientHeight + 2) b.hidden = false;
-    else pre.classList.remove("clamp");
   }
 }
 const refresh = () => { renderMine(); renderTabs(); paintFavs(); filter(); markLong(); };
@@ -182,7 +181,7 @@ document.addEventListener("click", e => {
     return;
   }
   const x = e.target.closest("[data-expand]");
-  if (x) { const open = x.closest(".item").classList.toggle("open"); x.textContent = open ? "Свернуть ↑" : "Показать полностью ↓"; return; }
+  if (x) { const open = x.closest(".item").classList.toggle("open"); x.textContent = open ? "Свернуть ↑" : "Полностью ↓"; return; }
   const f = e.target.closest("[data-fav]");
   if (f) {
     const p = f.dataset.fav;
