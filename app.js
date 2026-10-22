@@ -226,5 +226,34 @@ if (form) {
   });
 }
 
+// ───────── 3D-логотип на главной: грузим после открытия страницы и не тратим трафик в режиме экономии
+const h3 = $("hero3d");
+if (h3 && !(navigator.connection && navigator.connection.saveData)) {
+  const add = (src, attrs, cb) => { const s = document.createElement("script"); s.src = src; Object.assign(s, attrs); s.onload = cb; document.head.appendChild(s); };
+  const load = () => add("https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js",
+    {integrity: "sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==", crossOrigin: "anonymous", referrerPolicy: "no-referrer"},
+    () => add("/hero3d.js?v=4", {}));
+  if (document.readyState === "complete") setTimeout(load, 150); else addEventListener("load", () => setTimeout(load, 150));
+}
+
+// ───────── Наклон карточек за курсором (только мышь и без «уменьшения движения»)
+if (matchMedia("(hover: hover) and (pointer: fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  let cur = null;
+  const reset = el => { el.classList.remove("tilting"); el.style.removeProperty("--rx"); el.style.removeProperty("--ry"); };
+  document.addEventListener("pointermove", e => {
+    const el = e.target.closest(".cat, .gcard, .steps li");
+    if (cur && cur !== el) reset(cur);
+    cur = el;
+    if (!el) return;
+    const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    el.classList.add("tilting");
+    el.style.setProperty("--ry", ((x - 0.5) * 12).toFixed(2) + "deg");
+    el.style.setProperty("--rx", ((0.5 - y) * 10).toFixed(2) + "deg");
+    el.style.setProperty("--mx", (x * 100).toFixed(1) + "%");
+    el.style.setProperty("--my", (y * 100).toFixed(1) + "%");
+  }, {passive: true});
+  document.addEventListener("pointerleave", () => { if (cur) reset(cur); cur = null; });
+}
+
 refresh();
 })();

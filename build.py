@@ -196,9 +196,9 @@ def page(*, title, desc, path, body, ld=None, og_type="website"):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;600;700&family=JetBrains+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="/style.css?v=17">{lds}
+<link rel="stylesheet" href="/style.css?v=20">{lds}
 <script>window.SITE={site_js}</script>
-<script src="/app.js?v=10" defer></script>{m_head}
+<script src="/app.js?v=11" defer></script>{m_head}
 </head>
 <body>
 {m_body}<div class="wrap">
@@ -395,6 +395,7 @@ def main():
 <p class="lead">Готовые промты для нейросетей на русском. Выберите задачу, заполните поля — и откройте промт в ChatGPT, Claude или Алисе одной кнопкой.</p>
 <input id="q" class="search" type="search" placeholder="Найти промт: резюме, пост, SQL…" aria-label="Поиск">
 <div class="stats"><div><b>{len(prompts)}</b><span>промтов</span></div><div><b>{len(CATS)}</b><span>разделов</span></div><div><b>{len(ai_pages)}</b><span>нейросетей</span></div><div><b>0 ₽</b><span>без регистрации</span></div></div>
+<div class="hero3d" id="hero3d" aria-hidden="true"></div>
 </section>
 <div class="quick" id="quick"></div>
 <section class="results" id="results" hidden>
